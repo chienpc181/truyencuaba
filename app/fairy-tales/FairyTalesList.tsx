@@ -41,12 +41,6 @@ useEffect(() => {
   }
 }, []);
 
-useEffect(() => {
-    getStories()
-    .then(data => setStories(data.stories))
-    .catch(error => console.error('Failed to fetch stories:', error))
-  }, [])
-
   const handleFilterChange = (filterType: string, value: string) => {
     // setFilters(prevFilters => ({ ...prevFilters, [filterType]: value }))
 
