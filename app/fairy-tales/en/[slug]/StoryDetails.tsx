@@ -45,7 +45,7 @@ export default function StoryDetails({ story }: { story: any }) {
             <p>
               {para.en}
               <sup>
-                {/* <a
+                <a
                   href="#"
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
@@ -60,10 +60,10 @@ export default function StoryDetails({ story }: { story: any }) {
                       {para.vi}
                     </span>
                   )}
-                </a> */}
-                <div className="tooltip tooltip-info tooltip-bottom" data-tip={para.vi}>
+                </a>
+                {/* <div className="tooltip tooltip-info tooltip-bottom" data-tip={para.vi}>
                   <span className='text-blue-600 pl-1'>[vie]</span>
-                </div>
+                </div> */}
               </sup>
             </p>
           </div>
