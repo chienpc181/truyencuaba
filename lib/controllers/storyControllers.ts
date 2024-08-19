@@ -44,7 +44,7 @@ export async function getStories(request: NextRequest) {
     const url = new URL(request.url);
     const paginationOptions = {
         page: url.searchParams.get('page') || '1',
-        limit: url.searchParams.get('limit') || '10'
+        limit: url.searchParams.get('limit') || '2'
     };
     const sortingOptions = {
         sort: url.searchParams.get('sort') || 'asc'

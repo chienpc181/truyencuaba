@@ -9,8 +9,11 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   // const data = await getStories();
-  const response = await fetch(`${process.env.BASE_URL}/api/stories`, {
-    cache: 'no-store', // Optionally disable caching for fresh data
+  // const response = await fetch(`${process.env.BASE_URL}/api/stories`, {
+  //   cache: 'no-store', 
+  // });
+  const response = await fetch('https://truyencuaba.vercel.app/api/stories', {
+    cache: 'no-store', 
   });
 
   if (!response.ok) {
@@ -21,7 +24,7 @@ export default async function Page() {
   const initialStories = data.stories;
   return (
     <div className='page-container'>
-      <div>test...</div>
+      <div>testing...</div>
         <FairyTalesList initialStories={initialStories} />
       </div>
 
