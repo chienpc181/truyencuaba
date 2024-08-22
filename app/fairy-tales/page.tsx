@@ -19,7 +19,7 @@ export default async function Page() {
   const data = await response.json();
   const initialStories = data.stories;
   return (
-    <div className='page-container'>
+    <div className='page-container' >
         <FairyTalesList initialStories={initialStories} />
       </div>
 

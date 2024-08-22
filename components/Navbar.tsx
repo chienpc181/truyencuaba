@@ -13,8 +13,6 @@ const Navbar = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                {/* <a className="btn btn-ghost text-xl text-orange-600">truyen-cua-ba</a> */}
-                {/* <img src=''></img> */}
                 <Image
                     src="/truyencuaba_logo.png"
                     alt="logo"
