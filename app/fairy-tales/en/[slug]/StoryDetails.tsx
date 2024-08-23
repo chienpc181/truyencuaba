@@ -25,6 +25,13 @@ export default function StoryDetails({ story }: { story: any }) {
   return (
     <div className='story-container'>
       <div className="story-details">
+      <div className="breadcrumbs text-sm">
+        <ul>
+          <li><a href='/'>Home</a></li>
+          <li><a href='/fairy-tales'>Fairy Tales</a></li>
+          <li>{story.title.en}</li>
+        </ul>
+      </div>
         <div className='reading-toolbar'>
           <button>switch</button>
         </div>
@@ -32,9 +39,12 @@ export default function StoryDetails({ story }: { story: any }) {
           <Image
             src={story.thumbnailUrl}
             alt={story.title.en}
-            layout="responsive"
             width={600}
             height={600}
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
           />
         </div>
         

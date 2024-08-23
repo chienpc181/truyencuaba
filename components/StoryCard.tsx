@@ -41,7 +41,6 @@ export default function StoryCard({ story, language }: StoryCardProps) {
           <Image
             src={story.thumbnailUrl}
             alt={story.title.vi}
-            layout="responsive"
             width={600}
             height={600}
           />

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 export default function StoryDetails({ story }: { story: any }) {
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
@@ -25,6 +26,13 @@ export default function StoryDetails({ story }: { story: any }) {
   return (
     <div className='story-container'>
       <div className="story-details">
+      <div className="breadcrumbs text-sm">
+        <ul>
+          <li><a href='/'>Trang chủ</a></li>
+          <li><a href='/fairy-tales'>Truyện cổ tích</a></li>
+          <li>{story.title.vi}</li>
+        </ul>
+      </div>
         <div className='reading-toolbar'>
           <button>switch</button>
         </div>
@@ -32,9 +40,12 @@ export default function StoryDetails({ story }: { story: any }) {
           <Image
             src={story.thumbnailUrl}
             alt={story.title.vi}
-            layout="responsive"
             width={600}
             height={600}
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
           />
         </div>
         
