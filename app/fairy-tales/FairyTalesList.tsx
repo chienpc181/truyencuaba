@@ -19,9 +19,9 @@ interface FairyTalesListProps {
   initialStories: Story[]
 }
 
-const page = 1;
-const limit = 3;
-const sort = 'asc';
+let currentPage = 1;
+const limit = 2;
+const sort = 'desc';
 
 export default function FairyTalesList({ initialStories }: FairyTalesListProps) {
   const [stories, setStories] = useState<Story[]>(initialStories)
@@ -58,18 +58,15 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
   }
 
   const handleLoadmore = async () => {
-    // getStories()
-    // .then(data => setStories([data.stories[0], data.stories[1]]))
-    // .catch(error => console.error('Failed to fetch stories:', error))
-
-    const baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'https://truyen-cua-ba.vercel.app';
-    const response = await fetch(`${baseUrl}/api/stories?page=${page}&limit=${limit}&sort=${sort}`, {
+    currentPage++;
+    const baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'https://truyencuaba.vercel.app';
+    const response = await fetch(`${baseUrl}/api/stories?page=${currentPage}&limit=${limit}&sort=${sort}`, {
       // cache: 'force-cache', 
       cache: 'no-store', 
     });
     const data = await response.json();
-    console.log(data.stories)
-    setStories(data.stories)
+    const newPage = data.stories;
+    setStories(prevStories => [...prevStories, ...newPage]);
   }
 
   return (

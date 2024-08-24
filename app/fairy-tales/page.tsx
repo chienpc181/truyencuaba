@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const page = 1;
 const limit = 2;
-const sort = 'asc';
+const sort = 'desc';
 
 export default async function Page() {
   const response = await fetch(`${process.env.BASE_URL}/api/stories?page=${page}&limit=${limit}&sort=${sort}`, {
