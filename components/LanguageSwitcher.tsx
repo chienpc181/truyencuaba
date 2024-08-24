@@ -15,11 +15,11 @@ export default function LanguageSwitcher({language}: any) {
 
     return (
         <div className='language-switcher'>
-            <div className="px-2 py-1" style={language === 'vi' ? buttonHighlight : {}}>
+            <div className="px-2 py-1 font-semibold" style={language === 'vi' ? buttonHighlight : {}}>
                 <button title="Tiếng Việt" onClick={() => handleLanguageToggle()}>VIE</button>
             </div>
 
-            <div className="px-2 py-1" style={language === 'en' ? buttonHighlight : {}}>
+            <div className="px-2 py-1 font-semibold" style={language === 'en' ? buttonHighlight : {}}>
                 <button title="English" onClick={() => handleLanguageToggle()}>ENG</button>
             </div>
             
