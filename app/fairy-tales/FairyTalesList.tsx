@@ -6,7 +6,7 @@ import { getStories } from '@/lib/api'
 
 interface Story {
   _id: string
-  title: {en: string, vi: string}
+  title: { en: string, vi: string }
   description: {
     en: string;
     vi: string;
@@ -30,6 +30,7 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
     ageGroup: 'all',
     genre: 'all',
   })
+  const [textSearch, setTextSearch] = useState('');
 
   //   useEffect(() => {
   //     if (filters.sortBy !== 'popular' || filters.ageGroup !== 'all' || filters.genre !== 'all') {
@@ -60,13 +61,38 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
   const handleLoadmore = async () => {
     currentPage++;
     const baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'https://truyencuaba.vercel.app';
+    // const baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://localhost:8000';
     const response = await fetch(`${baseUrl}/api/stories?page=${currentPage}&limit=${limit}&sort=${sort}`, {
       // cache: 'force-cache', 
-      cache: 'no-store', 
+      cache: 'no-store',
     });
     const data = await response.json();
     const newPage = data.stories;
     setStories(prevStories => [...prevStories, ...newPage]);
+  }
+
+  const handleSearchStory = async (text: string) => {
+    // const baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'https://truyencuaba.vercel.app';
+    const baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://localhost:8000';
+    const response = await fetch(`${baseUrl}/api/stories/search?search=${text}`, {
+      // cache: 'force-cache', 
+      cache: 'no-store',
+    });
+    const data = await response.json();
+    return data;
+  }
+
+  const handleSearchKeydown = async (e: any) => {
+    if (e.key === 'Enter' && textSearch && textSearch.length) {
+      const data = await handleSearchStory(textSearch);
+      setStories(data.stories)
+      setTextSearch('');
+    }
+  }
+
+  const handleTextSearchChange = async (text: any) => {
+    setTextSearch(text);
+    
   }
 
   return (
@@ -96,8 +122,9 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
           <option value="mystery">Mystery</option>
         </select>
       </div>
-      <label className="input input-bordered flex items-center gap-2 mb-4" style={{height: '2.5rem'}}>
-        <input type="text" className="grow" placeholder="Search" />
+      <label className="input input-bordered flex items-center gap-2 mb-4" style={{ height: '2.5rem' }}>
+        <input type="text" className="grow" placeholder="Search" value={textSearch} onChange={(e) => handleTextSearchChange(e.target.value)}
+          onKeyDown={(e) => handleSearchKeydown(e)} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -118,7 +145,7 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
       <div className='flex justify-center my-4'>
         <button className='btn btn-outline' onClick={handleLoadmore}>Load more</button>
       </div>
-      
+
     </div>
   )
 }
