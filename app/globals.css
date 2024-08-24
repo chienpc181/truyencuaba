@@ -58,9 +58,15 @@ h1, h2, h3, h4, p {
 
 .story-details h1 {
     font-size: 2em;
-    margin: 1.25rem 0;
+    /* margin: 1.25rem 0; */
     font-weight: bold;
-    /* font-family: "Comic Neue", cursive; */
+    font-family: "Comic Neue", cursive;
+}
+
+.story-card h2 {
+  font-size: 1.15em;
+  font-weight: bold;
+  font-family: "Comic Neue", cursive;
 }
 
 .story-details p {

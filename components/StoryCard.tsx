@@ -49,7 +49,7 @@ export default function StoryCard({ story, language }: StoryCardProps) {
 
       <div className='pt-4'>
         <div>
-          <h2 className="text-lg font-bold">
+          <h2 className="">
             {language === 'en' ? story.title.en : story.title.vi}
           </h2>
           {/* <address style={{textAlign: 'right'}}>{story.author}</address> */}
@@ -58,11 +58,11 @@ export default function StoryCard({ story, language }: StoryCardProps) {
         <div className='flex'>
           
           
-          <Link href={`/fairy-tales/${language}/${story._id}`} className="text-blue-500 hover:underline">
+          <Link href={`/fairy-tales/${language}/${story._id}`} className="text-blue-500 hover:underline font-mono">
             {language === 'en' ? 'Read more' : 'Đọc truyện'}
           </Link>
           <span className='mx-2'>|</span>
-          <span className='text-blue-500 cursor-pointer' onClick={handleShowDescription}>
+          <span className='text-blue-500 cursor-pointer font-mono' onClick={handleShowDescription}>
             {showDescription ? (language === 'en' ? 'Hide' : 'Ẩn') : (language === 'en' ? 'Preview' : 'Giới thiệu')}
           </span>
         </div>

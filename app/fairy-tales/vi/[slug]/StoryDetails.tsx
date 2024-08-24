@@ -49,8 +49,8 @@ export default function StoryDetails({ story }: { story: any }) {
           />
         </div>
         
-        <h1 className='text-center'>{story.title.vi}</h1>
-        <address className='text-right'>{story.author}</address>
+        <h1 className='text-center font-serif'>{story.title.vi}</h1>
+        <address className='text-right font-mono'>{story.author}</address>
         {story.paragraphs.map((para: any, index: number) => (
           <div key={index} className="relative">
             <p>
