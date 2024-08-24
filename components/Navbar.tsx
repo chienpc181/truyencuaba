@@ -13,7 +13,7 @@ const Navbar = () => {
         setLanguage(savedLanguage);
     }, []);
     return (
-        <div className="drawer">
+        <div className="drawer border-b-2 border-indigo-300">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}

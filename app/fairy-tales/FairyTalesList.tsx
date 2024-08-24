@@ -55,15 +55,15 @@ useEffect(() => {
     <div>
       <h1 className="text-3xl font-bold">Fairy Tales</h1>
 
-      <div className="flex space-x-4 my-4">
-        <select 
+      <div className="flex space-x-2 my-4">
+        {/* <select 
           value={filters.sortBy} 
           onChange={(e) => handleFilterChange('sortBy', e.target.value)} 
           className="border p-2"
         >
           <option value="popular">Most Popular</option>
           <option value="new">New Arrivals</option>
-        </select>
+        </select> */}
 
         <select 
           value={filters.ageGroup} 
