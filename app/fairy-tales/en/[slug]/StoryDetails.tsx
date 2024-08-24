@@ -25,17 +25,17 @@ export default function StoryDetails({ story }: { story: any }) {
   return (
     <div className='story-container'>
       <div className="story-details">
-      <div className="breadcrumbs text-sm">
-        <ul>
-          <li><a href='/'>Home</a></li>
-          <li><a href='/fairy-tales'>Fairy Tales</a></li>
-          <li>{story.title.en}</li>
-        </ul>
-      </div>
+        <div className="breadcrumbs text-sm p-2">
+          <ul>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/fairy-tales'>Fairy Tales</a></li>
+            <li>{story.title.en}</li>
+          </ul>
+        </div>
         <div className='reading-toolbar'>
           <button>switch</button>
         </div>
-        <div style={{ marginLeft: '-1rem', marginRight: '-1rem' }}>
+        <div>
           <Image
             src={story.thumbnailUrl}
             alt={story.title.en}
@@ -47,37 +47,40 @@ export default function StoryDetails({ story }: { story: any }) {
             }}
           />
         </div>
-        
-        <h1 className='text-center font-serif'>{story.title.en}</h1>
-        <address className='text-right font-mono'>{story.author}</address>
-        {story.paragraphs.map((para: any, index: number) => (
-          <div key={index} className="relative">
-            <p>
-              {para.en}
-              <sup>
-                <a
-                  href="#"
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
-                  className="relative group text-blue-600 pl-1"
-                >
-                  [vie]
-                  {popupIndex === index && (
-                    <span
-                      className="absolute left-0 z-10 hidden group-hover:block w-auto min-w-96 p-2 mt-2 text-sm text-white rounded shadow-lg"
-                      style={{ background: '#2b3440' }}
+        <article className='p-4'>
+          <section>
+            <h1 className='text-center font-serif'>{story.title.en}</h1>
+            <address className='text-right font-mono'>{story.author}</address>
+          </section>
+
+          <section className=''>
+            {story.paragraphs.map((para: any, index: number) => (
+              <div key={index} className="relative">
+                <p>
+                  {para.en}
+                  <sup>
+                    <a
+                      href="#"
+                      onMouseEnter={() => handleMouseEnter(index)}
+                      onMouseLeave={handleMouseLeave}
+                      className="relative group text-blue-600 pl-1"
                     >
-                      {para.vi}
-                    </span>
-                  )}
-                </a>
-                {/* <div className="tooltip tooltip-info tooltip-bottom" data-tip={para.vi}>
-                  <span className='text-blue-600 pl-1'>[vie]</span>
-                </div> */}
-              </sup>
-            </p>
-          </div>
-        ))}
+                      [vie]
+                      {popupIndex === index && (
+                        <span
+                          className="absolute left-0 z-10 hidden group-hover:block w-auto min-w-96 p-2 mt-2 text-sm text-white rounded shadow-lg"
+                          style={{ background: '#2b3440' }}
+                        >
+                          {para.vi}
+                        </span>
+                      )}
+                    </a>
+                  </sup>
+                </p>
+              </div>
+            ))}
+          </section>
+        </article>
       </div>
     </div>
   );

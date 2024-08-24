@@ -47,8 +47,7 @@ h1, h2, h3, h4, p {
 }
 
 .story-details {
-  
-  padding: 1rem;
+  /* padding: 1rem; */
   background-color:#3c3c3cff;
   color: #e3e3e3ff;
   max-width: 800px;
@@ -60,13 +59,15 @@ h1, h2, h3, h4, p {
     font-size: 2em;
     /* margin: 1.25rem 0; */
     font-weight: bold;
-    font-family: "Comic Neue", cursive;
+    /* font-family: "Comic Neue", cursive; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .story-card h2 {
   font-size: 1.15em;
   font-weight: bold;
-  font-family: "Comic Neue", cursive;
+  /* font-family: "Comic Neue", cursive; */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .story-details p {
@@ -74,7 +75,7 @@ h1, h2, h3, h4, p {
     font-size: 1.02em; */
 }
 .story-details span {
-  font-family: "Comic Neue", cursive;
+  /* font-family: "Comic Neue", cursive; */
 }
 
 .reading-toolbar {
@@ -84,7 +85,7 @@ h1, h2, h3, h4, p {
   display: flex;
   padding: 1rem;
   border-radius: 8px;
-  margin-bottom: 1rem;
+  margin: 1rem 0.5rem;
 }
 
 .page-container {
@@ -143,4 +144,12 @@ h1, h2, h3, h4, p {
   -webkit-box-orient: vertical;
   white-space: normal; /* Ensures it works for multiline text */
   line-height: 1.5; /* Adjust line-height based on your design */
+}
+
+.language-switcher {
+  border: 1px solid green;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
 }

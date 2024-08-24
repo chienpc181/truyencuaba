@@ -59,7 +59,7 @@ export default function StoryCard({ story, language }: StoryCardProps) {
           
           
           <Link href={`/fairy-tales/${language}/${story._id}`} className="text-blue-500 hover:underline font-mono">
-            {language === 'en' ? 'Read more' : 'Đọc truyện'}
+            {language === 'en' ? 'Read story' : 'Đọc truyện'}
           </Link>
           <span className='mx-2'>|</span>
           <span className='text-blue-500 cursor-pointer font-mono' onClick={handleShowDescription}>
