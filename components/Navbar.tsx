@@ -46,7 +46,7 @@ const Navbar = () => {
                     {/* <div className="hidden flex-none lg:block">
                     {(language === 'vi' || language === 'en') && <LanguageSwitcher language={language}></LanguageSwitcher>}
                     </div> */}
-                    <div className="mr-2">
+                    <div className="">
                     {(language === 'vi' || language === 'en') && <LanguageSwitcher language={language}></LanguageSwitcher>}
                     </div>
                 </div>

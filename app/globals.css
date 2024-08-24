@@ -64,7 +64,7 @@ h1, h2, h3, h4, p {
 }
 
 .story-card h2 {
-  font-size: 1.15em;
+  font-size: 1.25em;
   font-weight: bold;
   /* font-family: "Comic Neue", cursive; */
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -153,4 +153,8 @@ h1, h2, h3, h4, p {
   align-items: center;
   border-radius: 4px;
   font-size: 14px;
+}
+
+.navbar .btn-square {
+  width: 2rem;
 }
