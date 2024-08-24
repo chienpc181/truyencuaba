@@ -1,5 +1,4 @@
-// const API_BASE_URL = 'https://truyen-cua-ba.vercel.app';
-const API_BASE_URL = process.env.BASE_URL;
+const API_BASE_URL = 'https://truyen-cua-ba.vercel.app';
 
 async function getStoriesByCategory(category: string, filters: any) {
     const query = new URLSearchParams(filters).toString()

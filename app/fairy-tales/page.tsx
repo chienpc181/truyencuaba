@@ -6,8 +6,13 @@ export const metadata: Metadata = {
   description: "Wonderful fairy tales",
 };
 
+const page = 1;
+const limit = 2;
+const sort = 'asc';
+
 export default async function Page() {
-  const response = await fetch(`${process.env.BASE_URL}/api/stories`, {
+  const response = await fetch(`${process.env.BASE_URL}/api/stories?page=${page}&limit=${limit}&sort=${sort}`, {
+    // cache: 'force-cache', 
     cache: 'no-store', 
   });
 

@@ -6,14 +6,22 @@ import { getStories } from '@/lib/api'
 
 interface Story {
   _id: string
-  title: string
-  description: string
-  content: string
+  title: {en: string, vi: string}
+  description: {
+    en: string;
+    vi: string;
+  }[];
+  thumbnailUrl: string,
+  author: string
 }
 
 interface FairyTalesListProps {
   initialStories: Story[]
 }
+
+const page = 1;
+const limit = 3;
+const sort = 'asc';
 
 export default function FairyTalesList({ initialStories }: FairyTalesListProps) {
   const [stories, setStories] = useState<Story[]>(initialStories)
@@ -49,7 +57,20 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
       .catch(error => console.error('Failed to fetch stories:', error))
   }
 
+  const handleLoadmore = async () => {
+    // getStories()
+    // .then(data => setStories([data.stories[0], data.stories[1]]))
+    // .catch(error => console.error('Failed to fetch stories:', error))
 
+    const baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'https://truyen-cua-ba.vercel.app';
+    const response = await fetch(`${baseUrl}/api/stories?page=${page}&limit=${limit}&sort=${sort}`, {
+      // cache: 'force-cache', 
+      cache: 'no-store', 
+    });
+    const data = await response.json();
+    console.log(data.stories)
+    setStories(data.stories)
+  }
 
   return (
     <div>
@@ -97,6 +118,10 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
           <StoryCard key={story._id} story={story} language={language} />
         ))}
       </div>
+      <div className='flex justify-center my-4'>
+        <button className='btn btn-outline' onClick={handleLoadmore}>Load more</button>
+      </div>
+      
     </div>
   )
 }

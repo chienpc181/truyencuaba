@@ -54,10 +54,9 @@ export async function getStories(request: NextRequest) {
     const page = Number(paginationOptions.page);
     const limit = Number(paginationOptions.limit);
     const sortOrder = sortingOptions.sort === 'asc' ? 1 : -1;
-    const sortOption = { title: sortOrder };
-
+    const sortOption = { createdAt: sortOrder };
     const stories = await Story.find(queryOptions)
-        .select('title genre author ages thumbnailUrl description')
+        .select('title genre author ages thumbnailUrl description createdAt')
         .sort(sortOption)
         .limit(limit)
         .skip((page - 1) * limit);
