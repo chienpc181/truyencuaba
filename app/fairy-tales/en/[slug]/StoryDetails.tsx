@@ -1,26 +1,37 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import { redirect } from 'next/navigation'
+import OverlayPanel from '@/components/OverlayPanel';
 
 export default function StoryDetails({ story }: { story: any }) {
-  const [popupIndex, setPopupIndex] = useState<number | null>(null);
+  const [overlayPosition, setOverlayPosition] = useState<{ top: number; left: number } | null>(null);
+  const [overlayContent, setOverlayContent] = useState<string | null>(null);
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const handleMouseEnter = (index: number) => {
-    setPopupIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setPopupIndex(null);
-  };
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage && savedLanguage === 'vi') {
-      redirect(`/fairy-tales/vi/${story._id}`);
-    }
+  const setButtonRef = useCallback((index: number) => (el: HTMLButtonElement | null) => {
+    buttonRefs.current[index] = el;
   }, []);
+
+  const showOverlayPanel = (index: number) => {
+    const buttonElement = buttonRefs.current[index];
+    if (buttonElement) {
+      const paragraph = buttonElement.parentElement;
+      if (paragraph) {
+        const rect = paragraph.getBoundingClientRect();
+        setOverlayPosition({
+          top: rect.bottom + window.scrollY + 8, // 1rem spacing
+          left: rect.left + window.scrollX,
+        });
+        setOverlayContent(story.paragraphs[index].vi); // Set the content based on the clicked button
+      }
+      
+    }
+  };
+
+  const hideOverlayPanel = () => {
+    setOverlayPosition(null);
+    setOverlayContent(null);
+  };
 
   return (
     <div className='story-container'>
@@ -48,40 +59,33 @@ export default function StoryDetails({ story }: { story: any }) {
           />
         </div>
         <article className='p-4'>
-          <section>
+        <section>
             <h1 className='text-center font-serif'>{story.title.en}</h1>
             <address className='text-right font-mono'>{story.author}</address>
           </section>
-
           <section className=''>
             {story.paragraphs.map((para: any, index: number) => (
               <div key={index} className="relative">
                 <p>
                   {para.en}
-                  <sup>
-                    <a
-                      href="#"
-                      onMouseEnter={() => handleMouseEnter(index)}
-                      onMouseLeave={handleMouseLeave}
-                      className="relative group text-blue-600 pl-1"
+                  <button
+                      ref={setButtonRef(index)}
+                      className="btn btn-info btn-xs ml-1"
+                      onClick={() => showOverlayPanel(index)}
                     >
-                      [vie]
-                      {popupIndex === index && (
-                        <span
-                          className="absolute left-0 z-10 hidden group-hover:block w-auto min-w-96 p-2 mt-2 text-sm text-white rounded shadow-lg"
-                          style={{ background: '#2b3440' }}
-                        >
-                          {para.vi}
-                        </span>
-                      )}
-                    </a>
-                  </sup>
+                      Translate
+                    </button>
                 </p>
               </div>
             ))}
           </section>
         </article>
       </div>
+      {overlayPosition && overlayContent && (
+        <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}>
+          <p>{overlayContent}</p>
+        </OverlayPanel>
+      )}
     </div>
   );
 }

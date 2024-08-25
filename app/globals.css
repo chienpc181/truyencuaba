@@ -158,3 +158,29 @@ h1, h2, h3, h4, p {
 .navbar .btn-square {
   width: 2rem;
 }
+
+.overlay-panel::before {
+  /* border-width: 10px;
+  margin-left: -10px;
+  border: solid transparent;
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #f2f2f2; */
+}
+
+.overlay-panel::after, .overlay-panel::before {
+  bottom: 100%;
+  left: 2rem;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.overlay-panel::after {
+  border-width: 8px;
+  /* margin-left: -8px;
+  border: solid transparent; */
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #ffffff;
+}
