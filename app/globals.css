@@ -140,7 +140,7 @@ h1, h2, h3, h4, p {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 9; /* Limits the number of lines */
+  -webkit-line-clamp: 9; 
   -webkit-box-orient: vertical;
   white-space: normal; /* Ensures it works for multiline text */
   line-height: 1.5; /* Adjust line-height based on your design */
