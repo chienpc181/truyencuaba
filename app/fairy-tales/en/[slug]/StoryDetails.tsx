@@ -1,7 +1,8 @@
 'use client';
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import OverlayPanel from '@/components/OverlayPanel';
+import { redirect } from 'next/navigation';
 
 export default function StoryDetails({ story }: { story: any }) {
   const [overlayPosition, setOverlayPosition] = useState<{ top: number; left: number } | null>(null);
@@ -32,6 +33,13 @@ export default function StoryDetails({ story }: { story: any }) {
     setOverlayPosition(null);
     setOverlayContent(null);
   };
+
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage && savedLanguage === 'vi') {
+      redirect(`/fairy-tales/vi/${story._id}`);
+    }
+  }, []);
 
   return (
     <div className='story-container'>
