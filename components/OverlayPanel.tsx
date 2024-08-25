@@ -34,7 +34,7 @@ export default function OverlayPanel({ children, position, onClose }: OverlayPan
         boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
         borderRadius: '8px',
         padding: '1rem',
-        maxWidth: '450px',
+        maxWidth: '750px',
         marginRight: '1rem'
       }}
       className='overlay-panel'

@@ -19,7 +19,7 @@ async function getStories() {
 }
 
 async function getAllStoryIds() {
-    const response = await fetch(`${API_BASE_URL}/api/stories`)
+    const response = await fetch(`${API_BASE_URL}/api/stories`, { cache: 'no-store' })
     if (!response.ok) {
         throw new Error('Failed to fetch stories')
       }
@@ -31,7 +31,7 @@ async function getAllStoryIds() {
 
 async function getStoryById(id: string) {
     // const response = await fetch(`${API_BASE_URL}/api/stories/${storyId}`, { cache: 'force-cache' })
-    const response = await fetch(`${API_BASE_URL}/api/stories/${id}`)
+    const response = await fetch(`${API_BASE_URL}/api/stories/${id}`, { cache: 'no-store' })
     
     if (!response.ok) {
       throw new Error('Failed to fetch story data')
