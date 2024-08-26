@@ -111,18 +111,8 @@ export default function Home() {
     // </main>
 
 
-    <>
-      <header>
-
-      </header>
-      <main>
-        <div>
-          Welcome to truyen-cua-ba
-        </div>
-      </main>
-      <footer>
-        <div></div>
-      </footer>
-    </>
+    <div>
+      Welcome to truyen-cua-ba
+    </div>
   );
 }

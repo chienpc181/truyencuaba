@@ -97,7 +97,7 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
 
   return (
     <div>
-      <h1 className="font-bold font-serif mt-0">Fairy Tales</h1>
+      <h1 className="font-bold font-serif mt-0">{language === 'en' ? 'Fairy Tales' : 'Truyện Cổ Tích'}</h1>
 
       <div className="flex space-x-2 my-4">
         <select
