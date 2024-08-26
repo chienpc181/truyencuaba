@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { useLanguageContext } from '@/app/context/LanguageProvider';
 
 export default function StoryDetails({ story }: { story: any }) {
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
+  const language = useLanguageContext();
 
   const handleMouseEnter = (index: number) => {
     setPopupIndex(index);
@@ -17,11 +19,10 @@ export default function StoryDetails({ story }: { story: any }) {
   };
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage && savedLanguage === 'en') {
+    if (language && language === 'en') {
       redirect(`/fairy-tales/en/${story._id}`);
     }
-  }, []);
+  }, [language, story._id]);
 
   return (
     <div className='story-container'>

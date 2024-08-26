@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "./context/LanguageProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,16 +17,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" data-theme="winter">
       <body>
-        <header>
-          <Navbar></Navbar>
-        </header>
-        <main style={{minHeight: '800px'}}>
-        {children}
-        </main>
-        <Footer></Footer>
+        <LanguageProvider>
+          <header>
+            <Navbar></Navbar>
+          </header>
+          <main style={{ minHeight: '800px' }}>
+            {children}
+          </main>
+          <Footer></Footer>
+        </LanguageProvider>
+
       </body>
     </html>
   );

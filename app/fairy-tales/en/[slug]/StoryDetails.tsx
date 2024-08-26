@@ -3,11 +3,13 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import OverlayPanel from '@/components/OverlayPanel';
 import { redirect } from 'next/navigation';
+import { useLanguageContext } from '@/app/context/LanguageProvider';
 
 export default function StoryDetails({ story }: { story: any }) {
   const [overlayPosition, setOverlayPosition] = useState<{ top: number; left: number } | null>(null);
   const [overlayContent, setOverlayContent] = useState<string | null>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const language = useLanguageContext();
 
   const setButtonRef = useCallback((index: number) => (el: HTMLButtonElement | null) => {
     buttonRefs.current[index] = el;
@@ -35,11 +37,10 @@ export default function StoryDetails({ story }: { story: any }) {
   };
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage && savedLanguage === 'vi') {
+    if (language && language === 'vi') {
       redirect(`/fairy-tales/vi/${story._id}`);
     }
-  }, []);
+  }, [story._id, language]);
 
   return (
     <div className='story-container'>
@@ -78,10 +79,16 @@ export default function StoryDetails({ story }: { story: any }) {
                   {para.en}
                   <button
                       ref={setButtonRef(index)}
-                      className="btn btn-info btn-xs ml-1"
+                      className="btn btn-square ml-1" style={{border: 'none', width: '22px', height: '22px', minHeight: 'unset'}}
                       onClick={() => showOverlayPanel(index)}
                     >
-                      Translate
+                      {/* <img src="/translation-icon.svg" alt="translate" /> */}
+                      <Image
+                          src="/translation-icon.svg"
+                          alt="Translation Icon"
+                          width={16}  // Adjust the width as needed
+                          height={16} // Adjust the height as needed
+                      />
                     </button>
                 </p>
               </div>

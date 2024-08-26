@@ -189,6 +189,9 @@ h1, h2, h3, h4, p {
   width: 14rem;
   padding: 1rem;
   line-height: 32px;
+  min-height: 200px;
+  border-radius: 8px;
+  margin-top: 8px;
 }
 .navbar .active-link {
   font-weight: bold;

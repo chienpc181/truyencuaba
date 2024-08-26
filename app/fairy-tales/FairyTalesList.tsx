@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import StoryCard from '@/components/StoryCard'
 import { getStories } from '@/lib/api'
+import { useLanguageContext } from '../context/LanguageProvider'
 
 interface Story {
   _id: string
@@ -40,15 +41,7 @@ export default function FairyTalesList({ initialStories }: FairyTalesListProps) 
   //     }
   //   }, [filters])
 
-
-  const [language, setLanguage] = useState('vi');
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
+  const language = useLanguageContext();
 
   const handleFilterChange = (filterType: string, value: string) => {
     // setFilters(prevFilters => ({ ...prevFilters, [filterType]: value }))
