@@ -45,7 +45,7 @@ export default function StoryDetails({ story }: { story: any }) {
   return (
     <div className='story-container'>
       <div className="story-details">
-        <div className="breadcrumbs text-sm p-2">
+        <div className="breadcrumbs text-sm p-4">
           <ul>
             <li><a href='/'>Home</a></li>
             <li><a href='/fairy-tales'>Fairy Tales</a></li>
@@ -79,7 +79,7 @@ export default function StoryDetails({ story }: { story: any }) {
                   {para.en}
                   <button
                       ref={setButtonRef(index)}
-                      className="btn btn-square ml-1" style={{border: 'none', width: '22px', height: '22px', minHeight: 'unset'}}
+                      className="btn btn-translate"
                       onClick={() => showOverlayPanel(index)}
                     >
                       {/* <img src="/translation-icon.svg" alt="translate" /> */}

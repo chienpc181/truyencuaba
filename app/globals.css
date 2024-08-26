@@ -175,7 +175,7 @@ h1, h2, h3, h4, p {
   border-bottom-color: #ffffff;
 }
 
-.navbar a {
+.navbar li a {
   margin: 0 8px;
   font-weight: 500;
 }
@@ -195,4 +195,19 @@ h1, h2, h3, h4, p {
 }
 .navbar .active-link {
   font-weight: bold;
+}
+
+.story-details .btn-translate {
+  padding: 0;
+  background-color: #676767;
+  border: none;
+  width: 22px;
+  height: 22px;
+  min-height: unset;
+  margin-left: 4px;
+}
+
+.story-details p {
+  font-size: 1.125em;
+  line-height: 28px;
 }
