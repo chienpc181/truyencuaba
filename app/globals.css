@@ -28,7 +28,8 @@ body {
     )
     rgb(var(--background-start-rgb)); */
 
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
+    /* font-family: Poppins,Roboto,Helvetica Neue,Arial,sans-serif,-apple-system,BlinkMacSystemFont; */
 }
 
 @layer utilities {
@@ -46,21 +47,7 @@ h1, h2, h3, h4, p {
   line-height: 1.5;
 }
 
-.story-details {
-  /* padding: 1rem; */
-  background-color:#3c3c3cff;
-  color: #e3e3e3ff;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow-wrap: break-word;
-}
 
-.story-details h1 {
-    font-size: 2em;
-    /* margin: 1.25rem 0; */
-    font-weight: bold;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
 
 .story-card h2 {
   font-size: 1.25em;
@@ -197,6 +184,23 @@ h1, h2, h3, h4, p {
   font-weight: bold;
 }
 
+.story-details {
+  /* padding: 1rem; */
+  background-color:#3c3c3cff;
+  color: #e3e3e3ff;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-wrap: break-word;
+  padding-bottom: 2rem;
+}
+
+.story-details h1 {
+    font-size: 2em;
+    /* margin: 1.25rem 0; */
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .story-details .btn-translate {
   padding: 0;
   background-color: #676767;
@@ -209,5 +213,35 @@ h1, h2, h3, h4, p {
 
 .story-details p {
   font-size: 1.125em;
-  line-height: 28px;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
 }
+
+.story-details .story-article {
+  padding: 1rem;
+}
+
+.story-details .thumbnail {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 820px) {
+  .story-details .story-article {
+    border-radius: 10px;
+    /* margin: 40px auto; */
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 24px #0000003d;
+
+  }
+
+  .story-details .thumbnail {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    /* padding-top: 1rem; */
+  }
+}
+

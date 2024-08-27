@@ -47,7 +47,7 @@ export default function StoryDetails({ story }: { story: any }) {
       <div className="story-details">
         <div className="breadcrumbs text-sm p-4">
           <ul>
-            <li><a href='/'>Trang chủ</a></li>
+            {/* <li><a href='/'>Trang chủ</a></li> */}
             <li><a href='/fairy-tales'>Truyện Cổ Tích</a></li>
             <li>{story.title.vi}</li>
           </ul>
@@ -55,24 +55,25 @@ export default function StoryDetails({ story }: { story: any }) {
         <div className='reading-toolbar'>
           <button>switch</button>
         </div>
-        <div>
-          <Image
-            src={story.thumbnailUrl}
-            alt={story.title.vi}
-            width={600}
-            height={600}
-            style={{
-              width: '100%',
-              height: 'auto',
-            }}
-          />
-        </div>
-        <article className='p-4'>
-        <section>
+        
+        <article className='story-article'>
+          <section>
             <h1 className='text-center font-serif'>{story.title.vi}</h1>
             <address className='text-right font-mono'>{story.author}</address>
+            <div className='thumbnail'>
+              <Image
+                src={story.thumbnailUrl}
+                alt={story.title.vi}
+                width={600}
+                height={600}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }}
+              />
+          </div>
           </section>
-          <section className=''>
+          <section className='mt-8'>
             {story.paragraphs.map((para: any, index: number) => (
               <div key={index} className="relative">
                 <p>
