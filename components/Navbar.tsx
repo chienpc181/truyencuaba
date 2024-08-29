@@ -53,7 +53,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <Link href="/fairy-tales" passHref legacyBehavior>
+                <Link href="/stories/en/fairy-tales" passHref legacyBehavior>
                     <a>
                         <Image
                             src="/truyencuaba_logo.png"
