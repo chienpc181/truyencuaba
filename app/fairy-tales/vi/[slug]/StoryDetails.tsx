@@ -75,7 +75,7 @@ export default function StoryDetails({ story }: { story: any }) {
           </section>
           <section className='mt-8'>
             {story.paragraphs.map((para: any, index: number) => (
-              <div key={index} className="relative">
+              <div key={index}>
                 <p>
                   {para.vi}
                   <button

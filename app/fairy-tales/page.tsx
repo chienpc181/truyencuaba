@@ -1,5 +1,7 @@
 import FairyTalesList from './FairyTalesList'
 import { Metadata } from 'next';
+import { Suspense } from 'react';
+import Header from './Header';
 
 export const metadata: Metadata = {
   title: "Fairy Tales - truyencuaba",
@@ -7,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const page = 1;
-const limit = 2;
+const limit = 4;
 const sort = 'desc';
 
 export default async function Page() {
@@ -21,12 +23,22 @@ export default async function Page() {
     throw new Error('Failed to fetch stories');
   }
 
+  // const language = useLanguageContext();
+
   const data = await response.json();
   const initialStories = data.stories;
   return (
     <div className='page-container' >
-        <FairyTalesList initialStories={initialStories} />
+      <Header></Header>
+      <Suspense fallback={<Loading/>}>
+      <FairyTalesList initialStories={initialStories} />
+      </Suspense>
+        
       </div>
 
   )
+}
+
+function Loading() {
+  return <h2>🌀 Loading...</h2>;
 }
