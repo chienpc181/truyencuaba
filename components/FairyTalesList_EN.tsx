@@ -1,4 +1,4 @@
-import StoryCard_EN from './StoryCard_EN'
+import StoryCard_EN from "./StoryCard_EN"
 
 interface Story {
   _id: string

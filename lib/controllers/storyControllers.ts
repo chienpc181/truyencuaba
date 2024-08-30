@@ -71,6 +71,29 @@ export async function getStories(request: NextRequest) {
     });
 }
 
+export async function getStoriesByAuthor(request: NextRequest) {
+    await dbConnect();  // Connect to the database
+    const url = new URL(request.url);
+    const author = url.searchParams.get('author') || '';
+    const sortingOptions = {
+        sort: url.searchParams.get('sort') || 'asc'
+    };
+    const limit = url.searchParams.get('limit') || '100';
+
+    const sortOrder = sortingOptions.sort === 'asc' ? 1 : -1;
+    const sortOption: any = { 'title.en': sortOrder };
+
+    const stories = await Story.find({ author: new RegExp(author, 'i') })  // Case-insensitive search for author
+        .select('title genre author ages thumbnailUrl description createdAt')
+        .sort(sortOption)
+        .limit(Number(limit));
+
+    return NextResponse.json({
+        stories,
+        totalStories: stories.length,
+    });
+}
+
 export async function searchStories(request: NextRequest) {
     try {
         await dbConnect();  // Connect to the database

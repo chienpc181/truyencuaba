@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import StoryCard_EN from '@/app/stories/en/fairy-tales/StoryCard_EN';
+import StoryCard_EN from '@/components/StoryCard_EN';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 interface CarouselProps {
