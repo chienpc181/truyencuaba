@@ -24,33 +24,33 @@ async function getStoriesByAuthor(author: string) {
 }
 
 export default async function Page() {
-  const response = await fetch(`${process.env.BASE_URL}/api/stories?page=${page}&limit=${limit}&sort=${sort}`, {
-    cache: 'force-cache',
-    //   cache: 'no-store', 
-  });
+  // const response = await fetch(`${process.env.BASE_URL}/api/stories?page=${page}&limit=${limit}&sort=${sort}`, {
+  //   cache: 'force-cache',
+  //   //   cache: 'no-store', 
+  // });
 
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch stories');
-  }
+  // if (!response.ok) {
+  //   throw new Error('Failed to fetch stories');
+  // }
 
-  const data = await response.json();
-  const initialStories = data.stories;
+  // const data = await response.json();
+  // const initialStories = data.stories;
 
 
-  // const storiesByBrothersGrimm = await getStoriesByAuthor('Brothers Grimm');
-  // const storiesByAndersen = await getStoriesByAuthor('Hans Christian Andersen');
+  const storiesByBrothersGrimm = await getStoriesByAuthor('Brothers Grimm');
+  const storiesByAndersen = await getStoriesByAuthor('Hans Christian Andersen');
 
   return (
     <div className='page-container' >
       <h1 className='font-bold font-serif mt-0 text-xl'>Fairy Tales</h1>
       <div>
         <CategoryHeader header={{label: 'Brothers Grimm', url: `/stories/en/fairy-tales/author/Brothers Grimm`}}></CategoryHeader>
-        <Carousel stories={initialStories}></Carousel>
+        <Carousel stories={storiesByBrothersGrimm.stories}></Carousel>
       </div>
       <div>
         <CategoryHeader header={{label: 'Hans Christian Andersen', url: `/stories/en/fairy-tales/author/Hans Christian Andersen`}}></CategoryHeader>
-        <Carousel stories={initialStories}></Carousel>
+        <Carousel stories={storiesByAndersen.stories}></Carousel>
       </div>
       
     </div>
