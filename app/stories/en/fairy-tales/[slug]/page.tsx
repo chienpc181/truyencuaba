@@ -1,5 +1,5 @@
 import { getStoryById, getAllStoryIds } from '@/lib/api';
-// import StoryDetails from './StoryDetails';
+import StoryDetails_EN from './StoryDetails_EN';
 import { Metadata, ResolvingMetadata } from 'next';
 
 // Fetch the data on the server side for static generation
@@ -25,10 +25,11 @@ export async function generateMetadata(
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-    const story = await getStoryById(params.slug);
-  
-    return (
-    //   <StoryDetails story={story} />
-    <>Testing...</>
-    );
-  }
+  const story = await getStoryById(params.slug);
+
+  return (
+    <StoryDetails_EN story={story} />
+  );
+}
+
+

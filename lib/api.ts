@@ -1,5 +1,5 @@
-import dbConnect from "./dbConnect"
-import Story from "./models/Story"
+// import dbConnect from "./dbConnect"
+// import Story from "./models/Story"
 
 // const API_BASE_URL = 'https://truyen-cua-ba.vercel.app';
 const API_BASE_URL = 'https://truyencuaba.vercel.app';
@@ -47,12 +47,12 @@ export async function getStoryById(id: string) {
 }
 
 export async function getAllAuthors() {
-  await dbConnect();
+  // await dbConnect();
 
-  // Use MongoDB's distinct method to get a list of unique authors
-  const authors = await Story.distinct('author');
+  // // Use MongoDB's distinct method to get a list of unique authors
+  // const authors = await Story.distinct('author');
 
-  return authors;
+  return ['Brothers Grimm', 'Hans Christian Andersen'];
 }
 
 export async function getStoriesByAuthor(author: string) {

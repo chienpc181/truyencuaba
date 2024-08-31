@@ -209,6 +209,7 @@ h1, h2, h3, h4, p {
   height: 22px;
   min-height: unset;
   margin-left: 4px;
+  color: darkblue;
 }
 
 .story-details p {

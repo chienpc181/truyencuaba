@@ -157,3 +157,12 @@ export async function getStory(request: NextRequest, id: string) {
         return NextResponse.json({ message: 'Story not found' }, { status: 404 });
     }
 }
+
+export async function getAllAuthors() {
+    await dbConnect();
+  
+    // Use MongoDB's distinct method to get a list of unique authors
+    const authors = await Story.distinct('author');
+  
+    return authors;
+  }
