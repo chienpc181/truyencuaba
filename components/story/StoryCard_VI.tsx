@@ -19,10 +19,10 @@ interface StoryCardProps {
   };
 }
 
-export default function StoryCard_EN({ story }: StoryCardProps) {
+export default function StoryCard_VI({ story }: StoryCardProps) {
   const [showDescription, setShowDescription] = useState(false);
 
-  const description = story.description[0]?.en || ''
+  const description = story.description[0]?.vi || ''
   const handleShowDescription = () => {
     setShowDescription(!showDescription);
   };
@@ -32,7 +32,7 @@ export default function StoryCard_EN({ story }: StoryCardProps) {
       <div className='thumbnail'>
         {!showDescription && <Image
             src={story.thumbnailUrl}
-            alt={story.title.en}
+            alt={story.title.vi}
             width={600}
             height={600}
           />}
@@ -40,14 +40,14 @@ export default function StoryCard_EN({ story }: StoryCardProps) {
       </div>
       <div className=''>
         <div>
-          <h2 className="text-center">{story.title.en}</h2>
+          <h2 className="text-center">{story.title.vi}</h2>
           
         </div>
         <div className='flex'>
-          <Link href={`/stories/en/fairy-tales/${story._id}`} className="text-blue-500 hover:underline">Read story</Link>
+          <Link href={`/vi/truyen-co-tich/${story._id}`} className="text-blue-500 hover:underline">Đọc truyện</Link>
           <span className='mx-2'>|</span>
           <span className='text-blue-500 cursor-pointer' onClick={handleShowDescription}>
-            {showDescription ? 'Hide' : 'Preview'}
+            {showDescription ? 'Ẩn' : 'Giới thiệu'}
           </span>
         </div>
       </div>

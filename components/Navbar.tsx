@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,7 +8,17 @@ import { useLanguageContext } from '@/app/context/LanguageProvider';
 
 const Navbar = () => {
     const pathname = usePathname();
-    const language = useLanguageContext();
+    const [language, setLanguage] = useState('vi'); // Default to 'vi'
+    const savedLang = useLanguageContext();
+    const [isLoading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (savedLang) {
+            setLanguage(savedLang);
+        }
+        setLoading(false);
+    }, [savedLang]);
+
     return (
         <div className="navbar bg-base-100" style={{ borderBottom: '1px solid #e5e7eb' }}>
             <div className="navbar-start">
@@ -53,7 +63,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <Link href="/stories/en/fairy-tales" passHref legacyBehavior>
+                <Link href={`/about-us`} passHref legacyBehavior>
                     <a>
                         <Image
                             src="/truyencuaba_logo.png"
@@ -67,7 +77,7 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden md:flex">
-                {language && <ul className='flex'>
+                {!isLoading && <ul className='flex'>
                     <li>
                         <Link href="/people" passHref legacyBehavior>
                             <a className={(pathname === '/people' || pathname.includes('/people')) ? 'active-link' : ''}>
@@ -76,11 +86,19 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/fairy-tales" passHref legacyBehavior>
+                        {/* <Link href="/fairy-tales" passHref legacyBehavior>
                             <a className={(pathname === '/fairy-tales' || pathname.includes('/fairy-tales')) ? 'active-link' : ''}>
                                 {language === 'en' ? 'Fairy Tales' : 'Truyện Cổ Tích'}
                             </a>
-                        </Link>
+                        </Link> */}
+                        {language === 'en' && <Link href="/en/fairy-tales" 
+                            className={pathname.includes('/fairy-tales') ? 'active-link' : ''}> 
+                            Fairy Tales
+                        </Link>}
+                        {language === 'vi' && <Link href="/vi/truyen-co-tich" 
+                            className={pathname.includes('/truyen-co-tich') ? 'active-link' : ''}>
+                            Truyện Cổ Tích
+                        </Link>}
                     </li>
                     <li>
                         <Link href="/about-us" passHref legacyBehavior>
@@ -92,7 +110,7 @@ const Navbar = () => {
                 </ul>}
             </div>
             <div className="navbar-end">
-                {language && <LanguageSwitcher language={language}></LanguageSwitcher>}
+                {!isLoading && <LanguageSwitcher language={language}></LanguageSwitcher>}
             </div>
         </div>
     );

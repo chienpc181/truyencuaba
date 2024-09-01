@@ -1,5 +1,5 @@
 import { getStoryById, getAllStoryIds } from '@/lib/api';
-import StoryDetails_EN from './StoryDetails_EN';
+import StoryDetails_EN from '@/components/story/StoryDetails_EN';
 import { Metadata, ResolvingMetadata } from 'next';
 
 // Fetch the data on the server side for static generation
