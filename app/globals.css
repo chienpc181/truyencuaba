@@ -124,12 +124,18 @@ h1, h2, h3, h4, p {
 }
 
 .language-switcher {
-  border: 1px solid green;
+  border: 1px solid darkgreen;
   padding: 0;
   display: flex;
   align-items: center;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+.language-switcher span {
+  font-weight: bold;
+  padding: 2px 8px;
 }
 
 .navbar .btn-square {
@@ -182,6 +188,17 @@ h1, h2, h3, h4, p {
 }
 .navbar .active-link {
   font-weight: bold;
+}
+
+.navbar .about-us {
+  font-size: 14px;
+  color: darksalmon; 
+  font-weight: 600;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 4px;
 }
 
 .story-details {
@@ -247,6 +264,15 @@ h1, h2, h3, h4, p {
 
   .reading-toolbar {
     border-radius: 10px;
+  }
+
+  
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 

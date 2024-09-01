@@ -4,7 +4,7 @@ import Image from 'next/image';
 import OverlayPanel from '@/components/OverlayPanel';
 import { MdTranslate } from "react-icons/md";
 
-export default function StoryDetails_EN({ story }: { story: any }) {
+export default function StoryDetails_VI({ story }: { story: any }) {
   const [overlayPosition, setOverlayPosition] = useState<{ top: number; left: number } | null>(null);
   const [overlayContent, setOverlayContent] = useState<string | null>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -23,7 +23,7 @@ export default function StoryDetails_EN({ story }: { story: any }) {
           top: rect.bottom + window.scrollY + 8, // 1rem spacing
           left: rect.left + window.scrollX,
         });
-        setOverlayContent(story.paragraphs[index].vi); // Set the content based on the clicked button
+        setOverlayContent(story.paragraphs[index].en); // Set the content based on the clicked button
       }
       
     }
@@ -39,8 +39,8 @@ export default function StoryDetails_EN({ story }: { story: any }) {
       <div className="story-details">
         <div className="breadcrumbs text-sm p-4">
           <ul>
-            <li><a href='/en/fairy-tales/fairy-tales'>Fairy Tales</a></li>
-            <li>{story.title.en}</li>
+            <li><a href='/vi/truyen-co-tich'>Truyện cổ tích</a></li>
+            <li>{story.title.vi}</li>
           </ul>
         </div>
         <div className='reading-toolbar'>
@@ -49,12 +49,12 @@ export default function StoryDetails_EN({ story }: { story: any }) {
         
         <article className='story-article'>
           <section>
-            <h1 className='text-center font-serif'>{story.title.en}</h1>
+            <h1 className='text-center font-serif'>{story.title.vi}</h1>
             <address className='text-right font-mono'>{story.author}</address>
             <div className='thumbnail'>
               <Image
                 src={story.thumbnailUrl}
-                alt={story.title.en}
+                alt={story.title.vi}
                 width={600}
                 height={600}
                 style={{
@@ -68,7 +68,7 @@ export default function StoryDetails_EN({ story }: { story: any }) {
             {story.paragraphs.map((para: any, index: number) => (
               <div key={index}>
                 <p>
-                  {para.en}
+                  {para.vi}
                   <button
                       ref={setButtonRef(index)}
                       className="btn btn-translate"

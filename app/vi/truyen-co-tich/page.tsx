@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Carousel from '@/components/Carousel';
 import CategoryHeader from '@/components/CategoryHeader';
 import { Suspense } from 'react';
+import Loading from '@/components/Loading';
 
 export const metadata: Metadata = {
     title: "Truyện cổ tích - truyencuaba",
@@ -29,13 +30,13 @@ export default async function Page() {
     return (
         <div className='page-container' >
             <h1 className='font-bold font-serif mt-0 text-xl'>Truyện cổ tích</h1>
-            <Suspense fallback={<span className="loading loading-ring loading-xs"></span>}>
+            <Suspense fallback={<Loading/>}>
                 <div>
-                    <CategoryHeader header={{ label: 'Brothers Grimm', url: `/en/fairy-tales/author/Brothers Grimm` }}></CategoryHeader>
+                    <CategoryHeader header={{ label: 'Brothers Grimm', url: `/vi/truyen-co-tich/tac-gia/Brothers Grimm` }}></CategoryHeader>
                     <Carousel stories={storiesByBrothersGrimm.stories}></Carousel>
                 </div>
                 <div>
-                    <CategoryHeader header={{ label: 'Hans Christian Andersen', url: `/en/fairy-tales/author/Hans Christian Andersen` }}></CategoryHeader>
+                    <CategoryHeader header={{ label: 'Hans Christian Andersen', url: `/vi/truyen-co-tich/tac-gia/Hans Christian Andersen` }}></CategoryHeader>
                     <Carousel stories={storiesByAndersen.stories}></Carousel>
                 </div>
             </Suspense>

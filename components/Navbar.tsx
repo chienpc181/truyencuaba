@@ -8,22 +8,22 @@ import { useLanguageContext } from '@/app/context/LanguageProvider';
 
 const Navbar = () => {
     const pathname = usePathname();
-    const [language, setLanguage] = useState('vi'); // Default to 'vi'
-    const savedLang = useLanguageContext();
+    // const [language, setLanguage] = useState('vi'); // Default to 'vi'
+    const {language} = useLanguageContext();
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (savedLang) {
-            setLanguage(savedLang);
-        }
+        // if (savedLang) {
+        //     setLanguage(savedLang);
+        // }
         setLoading(false);
-    }, [savedLang]);
+    }, [language]);
 
     return (
-        <div className="navbar bg-base-100" style={{ borderBottom: '1px solid #e5e7eb' }}>
+        <div className="navbar" style={{ borderBottom: '1px solid #e5e7eb' }}>
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -48,35 +48,29 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/fairy-tales" passHref legacyBehavior>
-                                <a className={(pathname === '/fairy-tales' || pathname.includes('/fairy-tales')) ? 'active-link' : ''}>
-                                    {language === 'en' ? 'Fairy Tales' : 'Truyện Cổ Tích'}
-                                </a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/about-us" passHref legacyBehavior>
-                                <a className={(pathname === '/about-us' || pathname.includes('/about-us')) ? 'active-link' : ''}>
-                                    {language === 'en' ? 'About Us' : 'Chúng Tôi'}
-                                </a>
-                            </Link>
+                            {language === 'en' && <Link href="/en/fairy-tales"
+                                className={pathname.includes('/fairy-tales') ? 'active-link' : ''}>
+                                Fairy Tales
+                            </Link>}
+                            {language === 'vi' && <Link href="/vi/truyen-co-tich"
+                                className={pathname.includes('/truyen-co-tich') ? 'active-link' : ''}>
+                                Truyện Cổ Tích
+                            </Link>}
                         </li>
                     </ul>
                 </div>
                 <Link href={`/about-us`} passHref legacyBehavior>
-                    <a>
-                        <Image
-                            src="/truyencuaba_logo.png"
-                            alt="logo"
-                            width={180}
-                            height={60}
-                            priority={true}
-                            style={{height: 'unset', maxWidth: 'unset'}}
-                        />
-                    </a>
+                    <Image
+                        src="/truyencuaba_logo.png"
+                        alt="logo"
+                        width={180}
+                        height={60}
+                        priority={true}
+                        style={{ height: 'unset', maxWidth: 'unset' }}
+                    />
                 </Link>
             </div>
-            <div className="navbar-center hidden md:flex">
+            <div className="navbar-center hidden lg:flex">
                 {!isLoading && <ul className='flex'>
                     <li>
                         <Link href="/people" passHref legacyBehavior>
@@ -86,31 +80,26 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li>
-                        {/* <Link href="/fairy-tales" passHref legacyBehavior>
-                            <a className={(pathname === '/fairy-tales' || pathname.includes('/fairy-tales')) ? 'active-link' : ''}>
-                                {language === 'en' ? 'Fairy Tales' : 'Truyện Cổ Tích'}
-                            </a>
-                        </Link> */}
-                        {language === 'en' && <Link href="/en/fairy-tales" 
-                            className={pathname.includes('/fairy-tales') ? 'active-link' : ''}> 
+                        {language === 'en' && <Link href="/en/fairy-tales"
+                            className={pathname.includes('/fairy-tales') ? 'active-link' : ''}>
                             Fairy Tales
                         </Link>}
-                        {language === 'vi' && <Link href="/vi/truyen-co-tich" 
+                        {language === 'vi' && <Link href="/vi/truyen-co-tich"
                             className={pathname.includes('/truyen-co-tich') ? 'active-link' : ''}>
                             Truyện Cổ Tích
                         </Link>}
                     </li>
-                    <li>
-                        <Link href="/about-us" passHref legacyBehavior>
-                            <a className={(pathname === '/about-us' || pathname.includes('/about-us')) ? 'active-link' : ''}>
-                                {language === 'en' ? 'About Us' : 'Chúng Tôi'}
-                            </a>
-                        </Link>
-                    </li>
                 </ul>}
             </div>
             <div className="navbar-end">
-                {!isLoading && <LanguageSwitcher language={language}></LanguageSwitcher>}
+                {!isLoading && <div >
+                    <div className='about-us'>
+                        <Link href="/about-us" passHref legacyBehavior>
+                            About us
+                        </Link>
+                    </div>
+                    <LanguageSwitcher></LanguageSwitcher>
+                </div>}
             </div>
         </div>
     );

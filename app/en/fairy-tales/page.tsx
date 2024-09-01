@@ -3,7 +3,7 @@ import Carousel from '@/components/Carousel';
 import CategoryHeader from '@/components/CategoryHeader';
 
 export const metadata: Metadata = {
-  title: "All Fairy Tales - truyencuaba",
+  title: "Fairy Tales - truyencuaba",
   description: "Wonderful fairy tales",
 };
 
