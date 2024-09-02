@@ -17,7 +17,7 @@ export async function generateMetadata(
  
   return {
     title: story.title.vi + ' - truyencuaba',
-    description: story.description[0] ? story.description[0].vi : 'Truyện cổ tích của ba'
+    description: story.introduction[0] ? story.introduction[0].vi : 'Truyện cổ tích của ba'
     // openGraph: {
     //   images: ['/some-specific-page-image.jpg', ...previousImages],
     // },

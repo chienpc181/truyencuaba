@@ -111,7 +111,7 @@ h1, h2, h3, h4, p {
   height: 250px !important;
 }
 
-.story-card .description {
+.story-card .introduction {
   padding: 0 1rem;
   /* max-height: 250px; */
   overflow: hidden;

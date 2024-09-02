@@ -9,7 +9,7 @@ interface StoryCardProps {
       en: string;
       vi: string;
     };
-    description: {
+    introduction: {
       en: string;
       vi: string;
     }[];
@@ -22,10 +22,10 @@ interface StoryCardProps {
 export default function StoryCard({ story, language }: StoryCardProps) {
   const [showDescription, setShowDescription] = useState(false);
 
-  const description =
+  const introduction =
     language === 'en'
-      ? story.description[0]?.en || ''
-      : story.description[0]?.vi || '';
+      ? story.introduction[0]?.en || ''
+      : story.introduction[0]?.vi || '';
 
   const handleShowDescription = () => {
     setShowDescription(!showDescription);
@@ -36,7 +36,7 @@ export default function StoryCard({ story, language }: StoryCardProps) {
       <div className='thumbnail'>
         {showDescription ? (
           
-          <p className='description'>{description}</p>
+          <p className='introduction'>{introduction}</p>
         ) : (
           <Image
             src={story.thumbnailUrl}

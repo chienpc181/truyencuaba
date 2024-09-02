@@ -17,7 +17,7 @@ export async function generateMetadata(
  
   return {
     title: story.title.en + ' - truyencuaba',
-    description: story.description[0] ? story.description[0].en : 'A wonderful fairy tale'
+    description: story.introduction[0] ? story.introduction[0].en : 'A wonderful fairy tale'
     // openGraph: {
     //   images: ['/some-specific-page-image.jpg', ...previousImages],
     // },
