@@ -17,7 +17,7 @@ interface CarouselProps {
       en: string;
       vi: string;
     };
-    description: {
+    introduction: {
       en: string;
       vi: string;
     }[];
