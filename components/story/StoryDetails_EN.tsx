@@ -39,7 +39,7 @@ export default function StoryDetails_EN({ story }: { story: any }) {
       <div className="story-details">
         <div className="breadcrumbs text-sm p-4">
           <ul>
-            <li><a href='/en/fairy-tales/fairy-tales'>Fairy Tales</a></li>
+            <li><a href='/en/fairy-tales'>Fairy Tales</a></li>
             <li>{story.title.en}</li>
           </ul>
         </div>

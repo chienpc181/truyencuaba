@@ -4,7 +4,7 @@ import Story from '@/lib/models/Story';
 
 export async function createStory(request: NextRequest) {
     await dbConnect();  // Connect to the database
-    const { title, author, paragraphs, genre, thumbnailUrl, ages } = await request.json();
+    const { title, author, paragraphs, genre, thumbnailUrl, introduction } = await request.json();
 
     if (!title) {
         return NextResponse.json({ message: 'Title and Author are required' }, { status: 400 });
@@ -16,7 +16,7 @@ export async function createStory(request: NextRequest) {
         genre,
         paragraphs,
         thumbnailUrl,
-        ages
+        introduction
     });
 
     const createdStory = await story.save();
@@ -56,7 +56,7 @@ export async function getStories(request: NextRequest) {
     const sortOrder = sortingOptions.sort === 'asc' ? 1 : -1;
     const sortOption: any = { createdAt: sortOrder };
     const stories = await Story.find(queryOptions)
-        .select('title genre author ages thumbnailUrl description createdAt')
+        .select('title genre author thumbnailUrl introduction createdAt')
         .sort(sortOption)
         .limit(limit)
         .skip((page - 1) * limit);
@@ -84,7 +84,7 @@ export async function getStoriesByAuthor(request: NextRequest) {
     const sortOption: any = { 'title.en': sortOrder };
 
     const stories = await Story.find({ author: new RegExp(author, 'i') })  // Case-insensitive search for author
-        .select('title genre author ages thumbnailUrl description createdAt')
+        .select('title genre author thumbnailUrl introduction createdAt')
         .sort(sortOption)
         .limit(Number(limit));
 
@@ -129,7 +129,7 @@ export async function searchStories(request: NextRequest) {
         const sortOrder = sortingOptions.sort === 'desc' ? -1 : 1;
         const sortOption: any = { createdAt: sortOrder }; // Sort by createdAt
         const stories = await Story.find(query)
-            .select('title genre author ages thumbnailUrl description createdAt')
+            .select('title genre author thumbnailUrl introduction createdAt')
             .sort(sortOption)
             .limit(limit)
             .skip((page - 1) * limit);
