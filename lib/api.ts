@@ -52,7 +52,7 @@ export async function getAllAuthors() {
   // // Use MongoDB's distinct method to get a list of unique authors
   // const authors = await Story.distinct('author');
 
-  return ['Brothers Grimm', 'Hans Christian Andersen'];
+  return ['Brothers Grimm', 'Hans Christian Andersen', 'Aesop', 'FolkTales', 'LegendTales'];
 }
 
 export async function getStoriesByAuthor(author: string) {

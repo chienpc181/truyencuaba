@@ -233,6 +233,7 @@ h1, h2, h3, h4, p {
   font-size: 1.125em;
   line-height: 1.6;
   letter-spacing: 0.2px;
+  text-indent: 1rem;
 }
 
 .story-details .story-article {
