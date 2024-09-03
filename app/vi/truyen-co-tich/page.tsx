@@ -43,15 +43,15 @@ export default async function Page() {
                     <Carousel stories={storiesByAndersen.stories}></Carousel>
                 </div>
                 <div className='mt-4'>
-                    <CategoryHeader header={{ label: 'Truyện ngụ ngôn Aesop', url: `/vi/fairy-tales/author/Aesop` }}></CategoryHeader>
+                    <CategoryHeader header={{ label: 'Truyện ngụ ngôn Aesop', url: `/vi/truyen-co-tich/tac-gia/Aesop` }}></CategoryHeader>
                     <Carousel stories={fableAesops.stories}></Carousel>
                 </div>
                 <div className='mt-4'>
-                    <CategoryHeader header={{ label: 'Truyện dân gian', url: `/vi/fairy-tales/author/FolkTales` }}></CategoryHeader>
+                    <CategoryHeader header={{ label: 'Truyện dân gian', url: `/vi/truyen-co-tich/tac-gia/FolkTales` }}></CategoryHeader>
                     <Carousel stories={folkTales.stories}></Carousel>
                 </div>
                 <div className='mt-4'>
-                    <CategoryHeader header={{ label: 'Truyền thuyết, sự tích', url: `/vi/fairy-tales/author/LegendTales` }}></CategoryHeader>
+                    <CategoryHeader header={{ label: 'Truyền thuyết, sự tích', url: `/vi/truyen-co-tich/tac-gia/LegendTales` }}></CategoryHeader>
                     <Carousel stories={legendTales.stories}></Carousel>
                 </div>
             </Suspense>
