@@ -280,6 +280,8 @@ h1, h2, h3, h4, p {
 .swiper-button-prev:after, .swiper-button-next:after {
   font-size: 1rem !important;
   font-weight: bold !important;
+  border: solid 1px #e5e7eb;
+  padding: 8px;
 }
 
 .swiper-button-next, .swiper-button-prev {
