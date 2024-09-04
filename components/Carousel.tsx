@@ -28,13 +28,9 @@ interface CarouselProps {
 
 export default function Carousel({ stories }: CarouselProps) {
   const {language} = useLanguageContext();
-  // const [language, setLanguage] = useState(savedLang);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    // if (savedLang) {
-    //   setLanguage(savedLang);
-    // }
     setLoading(false);
   }, [language]);
 
@@ -45,7 +41,7 @@ export default function Carousel({ stories }: CarouselProps) {
   }
   return (
     <Swiper
-      modules={[Navigation, Scrollbar, A11y]}
+      modules={[Navigation, Pagination]}
       spaceBetween={20}
       slidesPerView={1} // Show 1 card on mobile
       breakpoints={{
@@ -54,13 +50,15 @@ export default function Carousel({ stories }: CarouselProps) {
         },
         768: {
           slidesPerView: 2, // Show 2 cards on tablet
+          spaceBetween: 30,
         },
         1024: {
           slidesPerView: 3, // Show 3 cards on large screen
+          spaceBetween: 40,
         },
       }}
       navigation
-      pagination={{ clickable: true }}
+      pagination={true}
     >
       {stories.map((story) => (
         <SwiperSlide key={story._id}>

@@ -278,6 +278,26 @@ h1, h2, h3, h4, p {
 }
 
 .swiper-button-prev:after, .swiper-button-next:after {
-  font-size: 2rem !important;
-  /* font-weight: bold !important; */
+  font-size: 1rem !important;
+  font-weight: bold !important;
 }
+
+.swiper-button-next, .swiper-button-prev {
+  top: auto !important;
+  bottom: 50px !important;
+}
+
+.swiper-pagination {
+  bottom: 2px !important;
+  top: auto !important;
+}
+
+.category-header {
+  display: flex;
+}
+
+.category-header h3{
+  font-size: 1.25em;
+  font-weight: bold;
+}
+

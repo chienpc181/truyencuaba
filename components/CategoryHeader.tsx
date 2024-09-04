@@ -1,20 +1,19 @@
-import Link from "next/link"
+import Link from "next/link";
 import { FaAngleRight } from "react-icons/fa6";
 
-
 interface CategoryHeaderProps {
-    header: {
-        label: string,
-        url: string
-    }
-    
+    url: string;
+    label: string;
 }
-export default function CategoryHeader({header}: CategoryHeaderProps) {
 
+export default function CategoryHeader({ url, label }: CategoryHeaderProps) {
     return (
-        <Link href={header.url} className="flex items-center">
-            <h3 className="text-lg font-bold flex">{header.label}</h3>
-            <FaAngleRight className="pt-1 w-6 h-6"/>
-        </Link>
-    )
+        <div className="category-header">
+            <Link href={url} className="flex items-center" aria-label={`View more about ${label}`}>
+                <h3>{label}</h3>
+                <FaAngleRight className="ml-1 mt-1 w-5 h-5" aria-hidden="true" />
+            </Link>
+        </div>
+        
+    );
 }

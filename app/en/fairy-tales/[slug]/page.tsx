@@ -2,6 +2,8 @@ import { getStoryById, getAllStoryIds } from '@/lib/api';
 import StoryDetails_EN from '@/components/story/StoryDetails_EN';
 import { Metadata, ResolvingMetadata } from 'next';
 
+export const revalidate = 3600; // 1 hours
+
 // Fetch the data on the server side for static generation
 export async function generateStaticParams() {
   const storyIds = await getAllStoryIds();
