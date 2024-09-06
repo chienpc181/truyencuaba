@@ -3,7 +3,7 @@ import FairyTalesList_EN from '@/components/story/FairyTalesList_EN';
 import { Metadata, ResolvingMetadata } from 'next';
 
 // Define revalidation time (e.g., every day)
-export const revalidate = 86400; // 24 hours
+export const revalidate = 60; // 24 hours
 
 export async function generateStaticParams() {
     const authors = await getAllAuthors();
