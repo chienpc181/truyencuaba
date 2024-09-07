@@ -40,7 +40,7 @@ export default function StoryCard_VI({ story }: StoryCardProps) {
       </div>
       <div className=''>
         <div>
-          <h2 className="text-center">{story.title.vi}</h2>
+        <h3 className="text-center text-lg font-bold">{story.title.vi}</h3>
         </div>
         <div className='flex'>
           <Link href={`/vi/truyen-co-tich/${story._id}`} className="text-blue-500 hover:underline">Đọc truyện</Link>

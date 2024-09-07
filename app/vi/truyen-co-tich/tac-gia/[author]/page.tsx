@@ -1,6 +1,7 @@
 import { getAllAuthors, getStoriesByAuthor } from '@/lib/api';
 import FairyTalesList_VI from '@/components/story/FairyTalesList_VI';
 import { Metadata, ResolvingMetadata } from 'next';
+import AuthorIntroduce_VI from '@/components/author/AuthorIntroduce_VI';
 
 // Define revalidation time (e.g., every day)
 // export const revalidate = 86400; // 24 hours
@@ -29,8 +30,11 @@ export default async function Page({ params }: { params: { author: string } }) {
 
     return (
         <div className='page-container'>
-            <h1 className='font-bold font-serif mt-0 text-xl'>Tuyển tập {decodedAuthor}</h1>
-            <FairyTalesList_VI initialStories={stories} /> 
+            <AuthorIntroduce_VI author={decodedAuthor}></AuthorIntroduce_VI>
+            <div >
+                <h2 className='font-bold text-lg'>Tuyển Tập</h2>
+                <FairyTalesList_VI initialStories={stories} /> 
+            </div>
         </div>
     );
 }

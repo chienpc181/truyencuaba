@@ -39,10 +39,7 @@ export default function StoryCard_EN({ story }: StoryCardProps) {
           {showDescription && <p className='introduction'>{introduction}</p>}
       </div>
       <div className=''>
-        <div>
-          <h2 className="text-center">{story.title.en}</h2>
-          
-        </div>
+        <h3 className="text-center text-lg font-semibold">{story.title.en}</h3>
         <div className='flex'>
           <Link href={`/en/fairy-tales/${story._id}`} className="text-blue-500 hover:underline">Read story</Link>
           <span className='mx-2'>|</span>
