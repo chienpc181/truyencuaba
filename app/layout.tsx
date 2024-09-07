@@ -25,7 +25,7 @@ export default function RootLayout({
           <header>
             <Navbar></Navbar>
           </header>
-          <main style={{ minHeight: '800px' }}>
+          <main className="main-container">
             {children}
           </main>
           <Footer></Footer>
