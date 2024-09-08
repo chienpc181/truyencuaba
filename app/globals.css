@@ -48,7 +48,7 @@ h1, h2, h3, h4, p {
 }
 
 .main-container {
-  /* padding-top: 80px;
+  /* padding-top: 76px;
   padding-left: 16rem; */
   min-height: 800px;
 }
@@ -134,7 +134,7 @@ h1, h2, h3, h4, p {
   display: flex;
   align-items: center;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 10px;
   margin: 0 auto;
 }
 
@@ -204,6 +204,7 @@ h1, h2, h3, h4, p {
   padding-bottom: 2px;
   padding-left: 8px;
   padding-right: 4px;
+  text-align: right;
 }
 
 .story-details {
@@ -276,10 +277,7 @@ h1, h2, h3, h4, p {
 }
 
 @media (min-width: 1024px) {
-  .navbar-custom {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+  
 }
 
 .swiper-button-prev:after, .swiper-button-next:after {

@@ -9,6 +9,7 @@ import { GiFairyWand } from "react-icons/gi";
 import { MdEmojiPeople } from "react-icons/md";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { MdKeyboardOptionKey } from "react-icons/md";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 const Navbar = () => {
     const pathname = usePathname();
@@ -19,12 +20,19 @@ const Navbar = () => {
     const sidebarRef = useRef<HTMLDivElement | null>(null);
 
     const toggleSidebar = () => {
-        setSidebarOpen(!sidebarOpen);
+        // setSidebarOpen(!sidebarOpen);
+        if (!sidebarOpen) {
+            setSidebarOpen(true);
+        }
     };
 
     const closeSidebar = () => {
         setSidebarOpen(false);
     };
+
+    const handleCloseSidebar = () => {
+        setSidebarOpen(false);
+    }
 
     const handleClickOutside = (event: MouseEvent) => {
         if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
@@ -55,20 +63,20 @@ const Navbar = () => {
 
     return (
         <div className='navbar-custom'>
-            <nav className="z-50 w-full bg-white border-b border-gray-200" style={{ height: '80px' }}>
-                <div className="px-3 py-3 lg:px-5 lg:pl-3">
+            <nav className="z-50 relative w-full bg-white border-b border-gray-200" >
+                <div className="px-4 py-2 lg:px-5 lg:pl-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center justify-start rtl:justify-end">
                             <button
                                 onClick={toggleSidebar}
                                 aria-controls="logo-sidebar"
                                 type="button"
-                                className="inline-flex items-center p-2 text-sm sm:hidden"
+                                className="inline-flex items-center text-sm lg:hidden"
                             >
                                 <span className="sr-only">Open sidebar</span>
                                 <HiMenuAlt1 className="h-6 w-6" />
                             </button>
-                            <div className="hover: cursor-pointer">
+                            <div className="hover: cursor-pointer ml-4">
                                 <Link href={`/about-us`} passHref legacyBehavior>
                                     <Image
                                         src="/truyencuaba_logo.png"
@@ -81,13 +89,33 @@ const Navbar = () => {
                                 </Link>
                             </div>
                         </div>
+                        <div className='flex'>
+                            <div style={{borderRight: '1px solid', paddingRight: '1rem', paddingLeft: '1rem'}}>
+                                <div className='flex justify-center'>Fairy Tales</div>
+                                <div>
+                                    <Link href='aaa'>Brothers Grimm</Link>
+                                    <Link href='aaa' className='ml-2'>Andersen</Link>
+                                    <Link href='aaa' className='ml-2'>Aesop</Link>
+                                    <Link href='aaa' className='ml-2'>Folk Tales</Link>
+                                </div>
+                            </div>
+                            <div style={{borderRight: '1px solid', paddingRight: '1rem', paddingLeft: '1rem'}}>
+                                <div className='flex justify-center'>Fairy Tales</div>
+                                <div>
+                                    <Link href='aaa'>Brothers Grimm</Link>
+                                    <Link href='aaa' className='ml-2'>Andersen</Link>
+                                    <Link href='aaa' className='ml-2'>Aesop</Link>
+                                    <Link href='aaa' className='ml-2'>Folk Tales</Link>
+                                </div>
+                            </div>
+                        </div>
                         <div className="flex items-center">
                             <div className="flex items-center ms-3">
                                 {!isLoading && (
                                     <div>
                                         <div className="about-us">
                                             <Link href="/about-us" passHref legacyBehavior>
-                                                About us
+                                                about us
                                             </Link>
                                         </div>
                                         <LanguageSwitcher />
@@ -102,12 +130,15 @@ const Navbar = () => {
             <aside
                 id="logo-sidebar"
                 ref={sidebarRef}
-                className={`fixed left-0 z-40 h-screen transition-transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed top-0 left-0 z-40 h-screen transition-transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                     } bg-white border-r border-gray-200`}
                 aria-label="Sidebar"
-                style={{ width: '20rem' }}
+                style={{ width: '17rem', paddingTop: '76px' }}
             >
-                <div className="h-full px-3 py-4 overflow-y-auto">
+                <div className="h-full pl-4 pr-2 pt-2 overflow-y-auto">
+                    <div className='flex justify-end' style={{color: 'brown'}} >
+                        <IoCloseCircleOutline className='size-6' onClick={handleCloseSidebar}/>
+                    </div>
                     <ul>
                         <SidebarItem
                             hrefEN="/en/fairy-tales"
@@ -187,7 +218,7 @@ function SidebarItem({ hrefEN, labelEN, hrefVI, labelVI, icon, isSubCategory }: 
     const { language } = useLanguageContext();
 
     return (
-        <li className={`flex items-center p-2 ${isActive ? 'active-link-sidebar' : ''}`} style={isSubCategory?{marginLeft: '1.5rem'}:{}}>
+        <li className={`flex items-center py-1 ${isActive ? 'active-link-sidebar' : ''}`} style={isSubCategory?{marginLeft: '1rem'}:{}}>
             {icon}
             <span className="ml-2">
                 {language === 'en' ? (
