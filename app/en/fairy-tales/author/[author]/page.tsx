@@ -4,7 +4,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import AuthorIntroduce_EN from '@/components/author/AuthorIntroduce_EN';
 
 // Define revalidation time (e.g., every day)
-export const revalidate = 60; // 24 hours
+// export const revalidate = 60; // 24 hours
 
 export async function generateStaticParams() {
     const authors = await getAllAuthors();

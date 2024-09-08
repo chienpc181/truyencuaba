@@ -13,6 +13,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 
 const Navbar = () => {
     const pathname = usePathname();
+    const decodedPathname = decodeURIComponent(pathname);
     const { language } = useLanguageContext();
     const [isLoading, setLoading] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -89,25 +90,76 @@ const Navbar = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className='flex'>
-                            <div style={{borderRight: '1px solid', paddingRight: '1rem', paddingLeft: '1rem'}}>
-                                <div className='flex justify-center'>Fairy Tales</div>
-                                <div>
-                                    <Link href='aaa'>Brothers Grimm</Link>
-                                    <Link href='aaa' className='ml-2'>Andersen</Link>
-                                    <Link href='aaa' className='ml-2'>Aesop</Link>
-                                    <Link href='aaa' className='ml-2'>Folk Tales</Link>
+                        <div className='hidden lg:block'>
+                            <div className='flex'>
+                                <div className='px-4 border-r border-x-gray-200'>
+                                    <span className={`flex justify-center font-semibold mb-2
+                                        ${(decodedPathname === '/en/fairy-tales' || decodedPathname === '/vi/truyen-co-tich') ? 'active-link-navbar' : ''}`}>
+                                        {language === 'en' ? (
+                                            <Link href="/en/fairy-tales">Fairy Tales</Link>
+                                        ) : (
+                                            <Link href="/vi/truyen-co-tich">Truyện Cổ Tích</Link>
+                                        )}
+                                    </span>
+                                    <ul className='flex'>
+                                        <NavbarItem
+                                            hrefEN="/en/fairy-tales/author/Brothers Grimm"
+                                            hrefVI="/vi/truyen-co-tich/tac-gia/Brothers Grimm"
+                                            labelEN="Brothers Grimm"
+                                            labelVI="Nhà Grimm"
+                                        />
+                                        <NavbarItem
+                                            hrefEN="/en/fairy-tales/author/Hans Christian Andersen"
+                                            hrefVI="/vi/truyen-co-tich/tac-gia/Hans Christian Andersen"
+                                            labelEN="Andersen"
+                                            labelVI="Andersen"
+                                        />
+                                        <NavbarItem
+                                            hrefEN="/en/fairy-tales/author/Aesop"
+                                            hrefVI="/vi/truyen-co-tich/tac-gia/Aesop"
+                                            labelEN="Fables of Aesop"
+                                            labelVI="Ngụ Ngôn Aesop"
+                                        />
+                                        <NavbarItem
+                                            hrefEN="/en/fairy-tales/author/FolkTales"
+                                            hrefVI="/vi/truyen-co-tich/tac-gia/FolkTales"
+                                            labelEN="Folk Tales"
+                                            labelVI="Dân Gian"
+                                        />
+                                        <NavbarItem
+                                            hrefEN="/en/fairy-tales/author/LegendTales"
+                                            hrefVI="/vi/truyen-co-tich/tac-gia/LegendTales"
+                                            labelEN="Legend Tales"
+                                            labelVI="Sự Tích"
+                                        />
+                                    </ul>
+                                </div>
+                                <div className='px-4 border-x-gray-200'>
+                                    <span className={`flex justify-center font-semibold mb-2
+                                        ${(decodedPathname === '/people' || decodedPathname === '/people') ? 'active-link-navbar' : ''}`}>
+                                        {language === 'en' ? (
+                                            <Link href="/people">Who is who</Link>
+                                        ) : (
+                                            <Link href="/people">Danh nhân nổi tiếng</Link>
+                                        )}
+                                    </span>
+                                    <ul className='flex'>
+                                        <NavbarItem
+                                            hrefEN="/en/fairy-tales/author/Brothers Grimm"
+                                            hrefVI="/vi/truyen-co-tich/tac-gia/Brothers Grimm"
+                                            labelEN="Brothers Grimm"
+                                            labelVI="Nhà Grimm"
+                                        />
+                                        <NavbarItem
+                                            hrefEN="/en/fairy-tales/author/Hans Christian Andersen"
+                                            hrefVI="/vi/truyen-co-tich/tac-gia/Hans Christian Andersen"
+                                            labelEN="Andersen"
+                                            labelVI="Andersen"
+                                        />
+                                    </ul>
                                 </div>
                             </div>
-                            <div style={{borderRight: '1px solid', paddingRight: '1rem', paddingLeft: '1rem'}}>
-                                <div className='flex justify-center'>Fairy Tales</div>
-                                <div>
-                                    <Link href='aaa'>Brothers Grimm</Link>
-                                    <Link href='aaa' className='ml-2'>Andersen</Link>
-                                    <Link href='aaa' className='ml-2'>Aesop</Link>
-                                    <Link href='aaa' className='ml-2'>Folk Tales</Link>
-                                </div>
-                            </div>
+
                         </div>
                         <div className="flex items-center">
                             <div className="flex items-center ms-3">
@@ -218,9 +270,39 @@ function SidebarItem({ hrefEN, labelEN, hrefVI, labelVI, icon, isSubCategory }: 
     const { language } = useLanguageContext();
 
     return (
-        <li className={`flex items-center py-1 ${isActive ? 'active-link-sidebar' : ''}`} style={isSubCategory?{marginLeft: '1rem'}:{}}>
+        <li className={`flex items-center font-semibold pt-3 ${isActive ? 'active-link-sidebar' : ''}`} 
+        style={isSubCategory?{marginLeft: '1rem', fontWeight:'400'}:{}}>
             {icon}
             <span className="ml-2">
+                {language === 'en' ? (
+                    <Link href={hrefEN}>{labelEN}</Link>
+                ) : (
+                    <Link href={hrefVI}>{labelVI}</Link>
+                )}
+            </span>
+        </li>
+    );
+}
+
+
+
+interface NavbarItemProps {
+    hrefEN: string;
+    labelEN: string;
+    hrefVI: string;
+    labelVI: string;
+}
+
+function NavbarItem({ hrefEN, labelEN, hrefVI, labelVI }: NavbarItemProps) {
+    const pathname = usePathname();
+    const decodedPathname = decodeURIComponent(pathname);
+    const isActive = decodedPathname === hrefEN || decodedPathname === hrefVI;
+
+    const { language } = useLanguageContext();
+
+    return (
+        <li className={`flex items-center ${isActive ? 'active-link-navbar' : ''}`} >
+            <span className="px-2">
                 {language === 'en' ? (
                     <Link href={hrefEN}>{labelEN}</Link>
                 ) : (
