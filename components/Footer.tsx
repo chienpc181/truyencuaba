@@ -2,13 +2,8 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        // <footer className="footer bg-neutral text-neutral-content p-10" style={{
-        //     backgroundImage: "url('/footer_background.png')",
-        //     backgroundSize: 'cover',
-        //     backgroundPosition: 'center',
-        //   }}>
         <footer className="footer bg-neutral text-neutral-content p-10">
-            <nav>
+            {/* <nav>
                 <h6 className="footer-title">Services</h6>
                 <a className="link link-hover">Branding</a>
                 <a className="link link-hover">Design</a>
@@ -27,7 +22,10 @@ const Footer = () => {
                 <a className="link link-hover">Terms of use</a>
                 <a className="link link-hover">Privacy policy</a>
                 <a className="link link-hover">Cookie policy</a>
-            </nav>
+            </nav> */}
+            <div >
+                truyencuaba.com 2024
+            </div>
         </footer>
     )
 }

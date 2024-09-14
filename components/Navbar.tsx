@@ -90,8 +90,8 @@ const Navbar = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className='hidden lg:block'>
-                            <div className='flex'>
+                        <div className='hidden lg:block mx-6 overflow-auto'>
+                            <div className='flex' style={{minWidth: '820px'}}>
                                 <div className='px-4 border-r border-x-gray-200'>
                                     <span className={`flex justify-center font-semibold mb-2
                                         ${(decodedPathname === '/en/fairy-tales' || decodedPathname === '/vi/truyen-co-tich') ? 'active-link-navbar' : ''}`}>
@@ -136,25 +136,25 @@ const Navbar = () => {
                                 </div>
                                 <div className='px-4 border-x-gray-200'>
                                     <span className={`flex justify-center font-semibold mb-2
-                                        ${(decodedPathname === '/people' || decodedPathname === '/people') ? 'active-link-navbar' : ''}`}>
+                                        ${(decodedPathname === '/en/people' || decodedPathname === '/vi/danh-nhan') ? 'active-link-navbar' : ''}`}>
                                         {language === 'en' ? (
-                                            <Link href="/people">Who is who</Link>
+                                            <Link href="/en/people">Who is who</Link>
                                         ) : (
-                                            <Link href="/people">Danh nhân nổi tiếng</Link>
+                                            <Link href="/vi/danh-nhan">Danh Nhân</Link>
                                         )}
                                     </span>
                                     <ul className='flex'>
                                         <NavbarItem
-                                            hrefEN="/en/fairy-tales/author/Brothers Grimm"
-                                            hrefVI="/vi/truyen-co-tich/tac-gia/Brothers Grimm"
-                                            labelEN="Brothers Grimm"
-                                            labelVI="Nhà Grimm"
+                                            hrefEN="/en/people/literature"
+                                            hrefVI="/vi/danh-nhan/van-hoc"
+                                            labelEN="Literature"
+                                            labelVI="Văn Học"
                                         />
                                         <NavbarItem
-                                            hrefEN="/en/fairy-tales/author/Hans Christian Andersen"
-                                            hrefVI="/vi/truyen-co-tich/tac-gia/Hans Christian Andersen"
-                                            labelEN="Andersen"
-                                            labelVI="Andersen"
+                                            hrefEN="/en/people/military"
+                                            hrefVI="/vi/danh-nhan/quan-su"
+                                            labelEN="Military"
+                                            labelVI="Quân Sự"
                                         />
                                     </ul>
                                 </div>
