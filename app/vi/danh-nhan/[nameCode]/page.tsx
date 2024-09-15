@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
-import { SectionWithTranslation_EN } from '@/components/story/SectionWithTranslation'
+import { SectionWithTranslation_VI } from '@/components/story/SectionWithTranslation'
 
 // This function generates the static paths
 export async function generateStaticParams() {
@@ -54,17 +54,17 @@ export default async function PersonPage({ params }: { params: { nameCode: strin
                             <img src={person.thumbnailUrl} alt={person.name} className="mb-2 rounded-lg shadow-lg w-28" />
                         </div>
                         <div className=''>
-                            <SectionWithTranslation_EN title='' items={person.introduction}></SectionWithTranslation_EN>
+                            <SectionWithTranslation_VI title='' items={person.introduction}></SectionWithTranslation_VI>
                         </div>
                     </section>
-                    <SectionWithTranslation_EN title='Early Life' items={person.earlyLife}></SectionWithTranslation_EN>
-                    <SectionWithTranslation_EN title='Career Path' items={person.careerPath}></SectionWithTranslation_EN>
-                    <SectionWithTranslation_EN title='Challenges' items={person.challenges}></SectionWithTranslation_EN>
-                    <SectionWithTranslation_EN title='Legacies' items={person.legacies}></SectionWithTranslation_EN>
-                    <SectionWithTranslation_EN title='Interesting Facts' items={person.facts} type='list'></SectionWithTranslation_EN>
-                    <SectionWithTranslation_EN title='Quotes' items={person.quotes} type='list'></SectionWithTranslation_EN>
-                    <SectionWithTranslation_EN title='Personal Life' items={person.personalLife}></SectionWithTranslation_EN>
-                    <SectionWithTranslation_EN title='Conclusion' items={person.conclusion}></SectionWithTranslation_EN>
+                    <SectionWithTranslation_VI title='Thuở thơ ấu' items={person.earlyLife}></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Con đường sự nghiệp' items={person.careerPath}></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Những thử thách' items={person.challenges}></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Di sản để lại' items={person.legacies}></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Sự thật thú vị' items={person.facts} type='list'></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Những câu nói bất hủ' items={person.quotes} type='list'></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Đời sống cá nhân' items={person.personalLife}></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Tổng kết' items={person.conclusion}></SectionWithTranslation_VI>
 
                 </article>
 

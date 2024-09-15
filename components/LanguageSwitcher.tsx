@@ -22,11 +22,20 @@ export default function LanguageSwitcher() {
             if (pathName.includes('/en/fairy-tales/author')) {
                 const newPath = pathName.replace('/en/fairy-tales/author', '/vi/truyen-co-tich/tac-gia');
                 router.push(newPath);
-            } else if (pathName === '/en/fairy-tales') {
+            } 
+            else if (pathName === '/en/fairy-tales') {
                 router.push('/vi/truyen-co-tich');
             }
             else if (pathName.includes('/en/fairy-tales/')) {
                 const newPath = pathName.replace('/en/fairy-tales', '/vi/truyen-co-tich');
+                router.push(newPath);
+            }
+            else if (pathName === '/en/people/literature') {
+                const newPath = pathName.replace('/en/people/literature', '/vi/danh-nhan/van-hoc');
+                router.push(newPath);
+            }
+            else if (pathName.includes('/en/people')) {
+                const newPath = pathName.replace('/en/people', '/vi/danh-nhan');
                 router.push(newPath);
             }
         }
@@ -34,10 +43,20 @@ export default function LanguageSwitcher() {
             if (pathName.includes('/vi/truyen-co-tich/tac-gia')) {
                 const newPath = pathName.replace('/vi/truyen-co-tich/tac-gia', '/en/fairy-tales/author');
                 router.push(newPath);
-            } else if (pathName === '/vi/truyen-co-tich') {
+            } 
+            else if (pathName === '/vi/truyen-co-tich') {
                 router.push('/en/fairy-tales');
-            } else if (pathName.includes('/vi/truyen-co-tich/')) {
+            } 
+            else if (pathName.includes('/vi/truyen-co-tich/')) {
                 const newPath = pathName.replace('/vi/truyen-co-tich', '/en/fairy-tales');
+                router.push(newPath);
+            }
+            else if (pathName === '/vi/danh-nhan/van-hoc') {
+                const newPath = pathName.replace('/vi/danh-nhan/van-hoc', '/en/people/literature');
+                router.push(newPath);
+            }
+            else if (pathName.includes('/vi/danh-nhan/')) {
+                const newPath = pathName.replace('/vi/danh-nhan', '/en/people');
                 router.push(newPath);
             }
         }

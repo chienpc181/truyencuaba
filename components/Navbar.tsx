@@ -147,8 +147,8 @@ const Navbar = () => {
                                         <NavbarItem
                                             hrefEN="/en/people/literature"
                                             hrefVI="/vi/danh-nhan/van-hoc"
-                                            labelEN="Literature"
-                                            labelVI="Văn Học"
+                                            labelEN="Greatest Writers"
+                                            labelVI="Những Nhà Văn Vĩ Đại"
                                         />
                                         <NavbarItem
                                             hrefEN="/en/people/military"
@@ -249,8 +249,8 @@ const Navbar = () => {
                         <SidebarItem
                             hrefEN="/en/people/literature"
                             hrefVI="/vi/danh-nhan/van-hoc"
-                            labelEN="Literature"
-                            labelVI="Văn Học"
+                            labelEN="Greatest Writers"
+                            labelVI="Những Nhà Văn Vĩ Đại"
                             icon={<MdKeyboardOptionKey />}
                             isSubCategory={true}
                         />

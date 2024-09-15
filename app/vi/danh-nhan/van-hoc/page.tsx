@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import {PersonCard_EN} from '@/components/story/PersonCard'
+import {PersonCard_VI} from '@/components/story/PersonCard'
 
 async function getLiteraturePeople() {
   const people = await prisma.people.findMany({
@@ -28,10 +28,10 @@ export default async function LiteraturePeoplePage() {
 
   return (
     <div className="page-container">
-      <h1 className="text-center font-serif">Greatest Writers</h1>
+      <h1 className="text-center font-serif">Những Nhà Văn Vĩ Đại</h1>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
       {people.map((person) => (
-        <PersonCard_EN key={person.id} person={person} />
+        <PersonCard_VI key={person.id} person={person} />
       ))}
       </div>
     </div>

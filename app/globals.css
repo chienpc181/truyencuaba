@@ -278,6 +278,7 @@ h1, h2, h3, h4, p {
   border-left: 4px solid brown;
   padding-left: 0.5rem;
   font-weight: bold;
+  font-size: 1.125em;
 }
 
 .story-details .people-article ul {
@@ -285,10 +286,6 @@ h1, h2, h3, h4, p {
   padding-left: 2rem;
   margin: unset;
   
-}
-
-.story-details .people-article ul p {
-  text-indent: unset !important;
 }
 
 .story-details .thumbnail {
@@ -305,7 +302,6 @@ h1, h2, h3, h4, p {
     max-width: 800px;
     padding: 1rem 2rem;
     box-shadow: 0 0 24px #0000003d;
-
   }
 
   .story-details .thumbnail {
