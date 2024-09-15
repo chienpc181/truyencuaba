@@ -240,11 +240,27 @@ const Navbar = () => {
                             isSubCategory={true}
                         />
                         <SidebarItem
-                            hrefEN="/people"
-                            hrefVI="/people"
+                            hrefEN="/en/people"
+                            hrefVI="/vi/danh-nhan"
                             labelEN="Who is who"
                             labelVI="Danh nhân nổi tiếng"
                             icon={<MdEmojiPeople />}
+                        />
+                        <SidebarItem
+                            hrefEN="/en/people/literature"
+                            hrefVI="/vi/danh-nhan/van-hoc"
+                            labelEN="Literature"
+                            labelVI="Văn Học"
+                            icon={<MdKeyboardOptionKey />}
+                            isSubCategory={true}
+                        />
+                        <SidebarItem
+                            hrefEN="/en/people/military"
+                            hrefVI="/vi/danh-nhan/quan-su"
+                            labelEN="Military"
+                            labelVI="Quân Sự"
+                            icon={<MdKeyboardOptionKey />}
+                            isSubCategory={true}
                         />
                     </ul>
                 </div>

@@ -1,5 +1,8 @@
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
+import OverlayPanel from '@/components/OverlayPanel';
+import { MdTranslate } from "react-icons/md";
+import ItemWithTranslation from './ItemWithTranslation';
 
 // This function generates the static paths
 export async function generateStaticParams() {
@@ -43,40 +46,33 @@ export default async function PersonPage({ params }: { params: { nameCode: strin
     return (
         <div className="story-container">
             <div className='story-details'>
-                <article className='story-article'>
+                <article className='people-article'>
                     <section className='mb-6'>
                         <h1 className="text-center font-serif">{person.name}</h1>
-                        <address className='text-center'>{person.title} </address>
+                        <address className='text-center text-sm'>{person.title} ({person.lifeTime})</address>
                     </section>
-                    <section className="flex justify-between">
+                    <section className="">
+                        <div className='min-w-32 flex flex-col p-2 pr-0 items-center float-right'>
+                            <img src={person.thumbnailUrl} alt={person.name} className="mb-2 rounded-lg shadow-lg w-28" />
+                        </div>
                         <div className='pr-4'>
-                            {person.introduction.map((item, index) => (
+                            {/* {person.introduction.map((item, index) => (
                                 <div key={index}>
                                     <p className="mb-2">{item.en}</p>
                                 </div>
-                            ))}
-                        </div>
-                        <div className='min-w-52 flex flex-col items-center'>
-                            <img src={person.thumbnailUrl} alt={person.name} className="mb-2 rounded-lg shadow-lg w-48" />
-                            <address>{person.lifeTime}</address>
+                            ))} */}
+                            <SectionParagraph title='' items={person.introduction}></SectionParagraph>
                         </div>
                     </section>
-                    <section>
-                        <h2 className='font-bold'>Early Life</h2>
-                        {person.earlyLife.map((item, index) => (
-                            <div key={index}>
-                                <p className="mb-2">{item.en}</p>
-                            </div>
-                        ))}
-                    </section>
-                    <section>
-                        <h2 className='font-bold'>Career Path</h2>
-                        {person.careerPath.map((item, index) => (
-                            <div key={index}>
-                                <p className="mb-2">{item.en}</p>
-                            </div>
-                        ))}
-                    </section>
+                    <SectionParagraph title='Early Life' items={person.earlyLife}></SectionParagraph>
+                    <SectionParagraph title='Career Path' items={person.careerPath}></SectionParagraph>
+                    <SectionParagraph title='Challenges' items={person.challenges}></SectionParagraph>
+                    <SectionParagraph title='Legacies' items={person.legacies}></SectionParagraph>
+                    <SectionList title='Interesting Facts' items={person.facts}></SectionList>
+                    <SectionList title='Quotes' items={person.quotes}></SectionList>
+                    <SectionParagraph title='Personal Life' items={person.personalLife}></SectionParagraph>
+                    <SectionParagraph title='Conclusion' items={person.conclusion}></SectionParagraph>
+                    
                 </article>
 
             </div>
@@ -84,3 +80,31 @@ export default async function PersonPage({ params }: { params: { nameCode: strin
         </div>
     )
 }
+
+function SectionParagraph({ title, items }: { title: string, items: {en: string, vi: string}[]}) {
+    return (
+        <section>
+        <h2>{title}</h2>
+        {items.map((item, index) => (
+            <ItemWithTranslation item={item} key={index}></ItemWithTranslation>
+        ))}
+    </section>
+    )
+  }
+
+  function SectionList({ title, items }: { title: string, items: {en: string, vi: string}[]}) {
+    return (
+        <section>
+        <h2>{title}</h2>
+        <ul>
+        {items.map((item, index) => (
+            <li key={index}>
+<ItemWithTranslation item={item} ></ItemWithTranslation>
+            </li>
+            
+        ))}
+        </ul>
+        
+    </section>
+    )
+  }
