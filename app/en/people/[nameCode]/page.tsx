@@ -51,11 +51,11 @@ export default async function PersonPage({ params }: { params: { nameCode: strin
                         <h1 className="text-center font-serif">{person.name}</h1>
                         <address className='text-center text-sm'>{person.title} ({person.lifeTime})</address>
                     </section>
-                    <section className="">
-                        <div className='min-w-32 flex flex-col p-2 pr-0 items-center float-right'>
+                    <section className="min-h-36">
+                        <div className='min-w-32 flex flex-col p-2 pl-0 items-center float-left'>
                             <img src={person.thumbnailUrl} alt={person.name} className="mb-2 rounded-lg shadow-lg w-28" />
                         </div>
-                        <div className='pr-4'>
+                        <div className=''>
                             {/* {person.introduction.map((item, index) => (
                                 <div key={index}>
                                     <p className="mb-2">{item.en}</p>

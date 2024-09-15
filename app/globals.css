@@ -259,6 +259,13 @@ h1, h2, h3, h4, p {
   text-indent: 1rem;
 }
 
+.people-article p {
+  font-size: 1em;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  text-indent: 1rem;
+}
+
 .story-details .story-article {
   padding: 1rem;
 }
