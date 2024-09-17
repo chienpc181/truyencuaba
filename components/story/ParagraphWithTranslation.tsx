@@ -33,9 +33,9 @@ function ParagraphWithTranslation_EN({ item }: { item: { en: string, vi: string 
     return (
         <>
             <p>
-                {item.en}
+                <span dangerouslySetInnerHTML={parseContentToHTML(item.en)} />
                 <button
-                    className="btn btn-translate"
+                    className="btn btn-translate float-right translate-x-2"
                     ref={setButtonRef()}
                     onClick={() => showOverlayPanel(item)}
                 >
@@ -44,13 +44,18 @@ function ParagraphWithTranslation_EN({ item }: { item: { en: string, vi: string 
             </p>
             {overlayPosition && overlayContent && (
                 <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}>
-                    <p style={{color: 'dimgray'}}>{overlayContent}</p>
+                    <p className='text-gray-800' dangerouslySetInnerHTML={parseContentToHTML(overlayContent)} />
                 </OverlayPanel>
             )}
         </>
-
     )
 }
+
+const parseContentToHTML = (content: string) => {
+    // Replace [text] with <strong>text</strong>
+    const parsedContent = content.replace(/\[(.*?)\]/g, '<strong>$1</strong>');
+    return { __html: parsedContent }; // Return an object with the key `__html` for dangerouslySetInnerHTML
+};
 
 function ParagraphWithTranslation_VI({ item }: { item: { en: string, vi: string } }) {
     const [overlayPosition, setOverlayPosition] = useState<{ top: number; left: number } | null>(null);
@@ -82,18 +87,19 @@ function ParagraphWithTranslation_VI({ item }: { item: { en: string, vi: string 
     return (
         <>
             <p>
-                {item.vi}
+                <span dangerouslySetInnerHTML={parseContentToHTML(item.vi)} />
                 <button
-                    className="btn btn-translate"
+                    className="btn btn-translate float-right translate-x-2"
                     ref={setButtonRef()}
                     onClick={() => showOverlayPanel(item)}
                 >
                     <MdTranslate />
                 </button>
             </p>
+
             {overlayPosition && overlayContent && (
                 <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}>
-                    <p style={{color: 'dimgray'}}>{overlayContent}</p>
+                    <p className='text-gray-800' dangerouslySetInnerHTML={parseContentToHTML(overlayContent)} />
                 </OverlayPanel>
             )}
         </>
@@ -101,4 +107,4 @@ function ParagraphWithTranslation_VI({ item }: { item: { en: string, vi: string 
     )
 }
 
-export {ParagraphWithTranslation_EN, ParagraphWithTranslation_VI}
+export { ParagraphWithTranslation_EN, ParagraphWithTranslation_VI }

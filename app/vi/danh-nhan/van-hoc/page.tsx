@@ -4,7 +4,8 @@ import {PersonCard_VI} from '@/components/story/PersonCard'
 async function getLiteraturePeople() {
   const people = await prisma.people.findMany({
     where: {
-      field: 'Literature'
+      field: 'Literature',
+      isActive: true
     },
     select: {
       id: true,

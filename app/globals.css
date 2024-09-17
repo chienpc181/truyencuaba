@@ -67,6 +67,7 @@ h1, h2, h3, h4, p {
   padding: 1rem;
   border-radius: 0;
   margin-bottom: 1rem;
+  justify-content: center;
 }
 
 .page-container {
@@ -256,14 +257,14 @@ h1, h2, h3, h4, p {
   font-size: 1.125em;
   line-height: 1.6;
   letter-spacing: 0.2px;
-  text-indent: 1rem;
+  /* text-indent: 1rem; */
 }
 
 .people-article p {
   font-size: 1em;
   line-height: 1.6;
   letter-spacing: 0.2px;
-  text-indent: 1rem;
+  /* text-indent: 1rem; */
 }
 
 .story-details .story-article {
@@ -310,6 +311,15 @@ h1, h2, h3, h4, p {
     /* padding-top: 1rem; */
   }
 
+  .story-details .people-article {
+    border-radius: 10px;
+    /* margin: 40px auto; */
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 24px #0000003d;
+  }
+
   .reading-toolbar {
     border-radius: 10px;
   }
@@ -352,6 +362,6 @@ h1, h2, h3, h4, p {
 
 .page-container .page-header p {
   font-style: italic;
-  text-indent: 1rem;
+  /* text-indent: 1rem; */
 }
 

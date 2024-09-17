@@ -3,6 +3,7 @@ import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import OverlayPanel from '@/components/OverlayPanel';
 import { MdTranslate } from "react-icons/md";
+import ReadingToolbar from '../ReadingToolbar';
 
 export default function StoryDetails_VI({ story }: { story: any }) {
   const [overlayPosition, setOverlayPosition] = useState<{ top: number; left: number } | null>(null);
@@ -44,7 +45,7 @@ export default function StoryDetails_VI({ story }: { story: any }) {
           </ul>
         </div>
         <div className='reading-toolbar'>
-          <button>switch</button>
+          <ReadingToolbar></ReadingToolbar>
         </div>
         
         <article className='story-article'>

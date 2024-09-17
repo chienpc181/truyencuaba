@@ -20,18 +20,20 @@ model people {
   name          String
   nameCode      String      @unique
   lifeTime      String
-  title         String
+  title         Translation
   field         Field
   thumbnailUrl  String
   introduction  Translation[] 
-  earlyLife     Translation[] 
-  careerPath    Translation[] 
-  challenges    Translation[] 
-  legacies      Translation[] 
+  mainStory     Translation[] 
+  // earlyLife     Translation[] 
+  // careerPath    Translation[] 
+  // challenges    Translation[] 
+  // legacies      Translation[] 
   facts         Translation[]
   quotes        Translation[]
-  personalLife  Translation[]
+  // personalLife  Translation[]
   conclusion    Translation[]
+  isActive      Boolean
 }
 
 type Translation {
