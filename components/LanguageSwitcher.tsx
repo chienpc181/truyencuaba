@@ -2,10 +2,12 @@
 import { useRouter } from 'next/navigation';
 import { useLanguageContext } from '@/app/context/LanguageProvider';
 import { useEffect } from 'react';
+import { PeopleCategory } from '@/app/mappingCategory';
 
 export default function LanguageSwitcher() {
     const router = useRouter();
     const { language, setLanguage } = useLanguageContext();
+    const peopleCategory = new PeopleCategory();
 
     const handleLanguageToggle = () => {
         const newLanguage = language === 'en' ? 'vi' : 'en';
@@ -13,10 +15,10 @@ export default function LanguageSwitcher() {
     };
 
     useEffect(() => {
-        redirectByLanguage(language, router)
+        redirectByLanguage(language)
     }, [language])
 
-    const redirectByLanguage = (language: string, router: any) => {
+    const redirectByLanguage = (language: string) => {
         const pathName = window.location.pathname;
         if (language === 'vi') {
             if (pathName.includes('/en/fairy-tales/author')) {
@@ -30,12 +32,17 @@ export default function LanguageSwitcher() {
                 const newPath = pathName.replace('/en/fairy-tales', '/vi/truyen-co-tich');
                 router.push(newPath);
             }
-            else if (pathName === '/en/people/literature') {
-                const newPath = pathName.replace('/en/people/literature', '/vi/danh-nhan/van-hoc');
-                router.push(newPath);
-            }
-            else if (pathName.includes('/en/people')) {
-                const newPath = pathName.replace('/en/people', '/vi/danh-nhan');
+
+            if (pathName.includes('/en/people')) {
+                let newPath = findAndReplace(pathName, 'en', 'vi');
+                newPath = findAndReplace(newPath, 'people', 'danh-nhan');
+                newPath = findAndReplace(newPath, 'field', 'linh-vuc');
+                newPath = findAndReplace(newPath, peopleCategory.literatureAndArt.slugEN, peopleCategory.literatureAndArt.slugVI);
+                newPath = findAndReplace(newPath, peopleCategory.scienceAndTechnology.slugEN, peopleCategory.scienceAndTechnology.slugVI);
+                newPath = findAndReplace(newPath, peopleCategory.militaryAndPolitic.slugEN, peopleCategory.militaryAndPolitic.slugVI);
+                newPath = findAndReplace(newPath, peopleCategory.sports.slugEN, peopleCategory.sports.slugVI);
+                newPath = findAndReplace(newPath, peopleCategory.entertainment.slugEN, peopleCategory.entertainment.slugVI);
+
                 router.push(newPath);
             }
         }
@@ -51,14 +58,29 @@ export default function LanguageSwitcher() {
                 const newPath = pathName.replace('/vi/truyen-co-tich', '/en/fairy-tales');
                 router.push(newPath);
             }
-            else if (pathName === '/vi/danh-nhan/van-hoc') {
-                const newPath = pathName.replace('/vi/danh-nhan/van-hoc', '/en/people/literature');
+
+            if (pathName.includes('/vi/danh-nhan/')) {
+                let newPath = findAndReplace(pathName, 'vi', 'en');
+                newPath = findAndReplace(newPath, 'danh-nhan', 'people');
+                newPath = findAndReplace(newPath, 'linh-vuc', 'field');
+                newPath = findAndReplace(newPath, peopleCategory.literatureAndArt.slugVI, peopleCategory.literatureAndArt.slugEN);
+                newPath = findAndReplace(newPath, peopleCategory.scienceAndTechnology.slugVI, peopleCategory.scienceAndTechnology.slugEN);
+                newPath = findAndReplace(newPath, peopleCategory.militaryAndPolitic.slugVI, peopleCategory.militaryAndPolitic.slugEN);
+                newPath = findAndReplace(newPath, peopleCategory.sports.slugVI, peopleCategory.sports.slugEN);
+                newPath = findAndReplace(newPath, peopleCategory.entertainment.slugVI, peopleCategory.entertainment.slugEN);
+
                 router.push(newPath);
             }
-            else if (pathName.includes('/vi/danh-nhan/')) {
-                const newPath = pathName.replace('/vi/danh-nhan', '/en/people');
-                router.push(newPath);
-            }
+        }
+    }
+
+    function findAndReplace(pathName: string, find: string, replace: string) {
+        find = '/' + find ;
+        replace = '/' + replace ;
+        if (pathName.includes(find)) {
+            return pathName.replace(find, replace)
+        } else {
+            return pathName
         }
     }
 
@@ -71,8 +93,8 @@ export default function LanguageSwitcher() {
         <div className='language-switcher'>
             <button onClick={handleLanguageToggle}>
                 <div className="flex">
-                    <span style={language === 'vi' ? buttonHighlight : {}}>VIE</span>
-                    <span style={language === 'en' ? buttonHighlight : {}}>ENG</span>
+                    <span style={language === 'vi' ? buttonHighlight : {}}>VI</span>
+                    <span style={language === 'en' ? buttonHighlight : {}}>EN</span>
                 </div>
             </button>
         </div>

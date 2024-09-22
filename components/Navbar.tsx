@@ -10,6 +10,7 @@ import { MdEmojiPeople } from "react-icons/md";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { MdKeyboardOptionKey } from "react-icons/md";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import { PeopleCategory } from '@/app/mappingCategory';
 
 const Navbar = () => {
     const pathname = usePathname();
@@ -19,6 +20,7 @@ const Navbar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const sidebarRef = useRef<HTMLDivElement | null>(null);
+    const peopleCategory = new PeopleCategory();
 
     const toggleSidebar = () => {
         // setSidebarOpen(!sidebarOpen);
@@ -40,6 +42,8 @@ const Navbar = () => {
             closeSidebar(); // Close the sidebar when clicking outside
         }
     };
+
+    
 
     // Close sidebar when clicking outside of it
     useEffect(() => {
@@ -145,16 +149,16 @@ const Navbar = () => {
                                     </span>
                                     <ul className='flex'>
                                         <NavbarItem
-                                            hrefEN="/en/people/literature"
-                                            hrefVI="/vi/danh-nhan/van-hoc"
-                                            labelEN="Greatest Writers"
-                                            labelVI="Những Nhà Văn Vĩ Đại"
+                                            hrefEN={peopleCategory.literatureAndArt.hrefEN}
+                                            hrefVI={peopleCategory.literatureAndArt.hrefVI}
+                                            labelEN={peopleCategory.literatureAndArt.displayNameEN}
+                                            labelVI={peopleCategory.literatureAndArt.displayNameVI}
                                         />
                                         <NavbarItem
-                                            hrefEN="/en/people/military"
-                                            hrefVI="/vi/danh-nhan/quan-su"
-                                            labelEN="Military"
-                                            labelVI="Quân Sự"
+                                            hrefEN={peopleCategory.scienceAndTechnology.hrefEN}
+                                            hrefVI={peopleCategory.scienceAndTechnology.hrefVI}
+                                            labelEN={peopleCategory.scienceAndTechnology.displayNameEN}
+                                            labelVI={peopleCategory.scienceAndTechnology.displayNameVI}
                                         />
                                     </ul>
                                 </div>
@@ -164,7 +168,7 @@ const Navbar = () => {
                         <div className="flex items-center">
                             <div className="flex items-center ms-3">
                                 {!isLoading && (
-                                    <div>
+                                    <div className='flex flex-col'>
                                         <div className="about-us">
                                             <Link href="/about-us" passHref legacyBehavior>
                                                 about us
@@ -247,18 +251,18 @@ const Navbar = () => {
                             icon={<MdEmojiPeople />}
                         />
                         <SidebarItem
-                            hrefEN="/en/people/literature"
-                            hrefVI="/vi/danh-nhan/van-hoc"
-                            labelEN="Greatest Writers"
-                            labelVI="Những Nhà Văn Vĩ Đại"
+                            hrefEN={peopleCategory.literatureAndArt.hrefEN}
+                            hrefVI={peopleCategory.literatureAndArt.hrefVI}
+                            labelEN={peopleCategory.literatureAndArt.displayNameEN}
+                            labelVI={peopleCategory.literatureAndArt.displayNameVI}
                             icon={<MdKeyboardOptionKey />}
                             isSubCategory={true}
                         />
                         <SidebarItem
-                            hrefEN="/en/people/military"
-                            hrefVI="/vi/danh-nhan/quan-su"
-                            labelEN="Military"
-                            labelVI="Quân Sự"
+                            hrefEN={peopleCategory.scienceAndTechnology.hrefEN}
+                            hrefVI={peopleCategory.scienceAndTechnology.hrefVI}
+                            labelEN={peopleCategory.scienceAndTechnology.displayNameEN}
+                            labelVI={peopleCategory.scienceAndTechnology.displayNameVI}
                             icon={<MdKeyboardOptionKey />}
                             isSubCategory={true}
                         />

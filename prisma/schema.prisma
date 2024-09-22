@@ -21,19 +21,16 @@ model people {
   nameCode      String      @unique
   lifeTime      String
   title         Translation
-  field         Field
+  category      Category
   thumbnailUrl  String
   introduction  Translation[] 
   mainStory     Translation[] 
-  // earlyLife     Translation[] 
-  // careerPath    Translation[] 
-  // challenges    Translation[] 
-  // legacies      Translation[] 
   facts         Translation[]
   quotes        Translation[]
-  // personalLife  Translation[]
   conclusion    Translation[]
   isActive      Boolean
+  isPublished  Boolean
+  publishedDate DateTime  
 }
 
 type Translation {
@@ -41,10 +38,10 @@ type Translation {
   vi String
 }
 
-enum Field {
-  Sport
-  Literature
-  Science
-  Politic
-  Military
+enum Category {
+  ScienceAndTechnology
+  LiteratureAndArt
+  MilitaryAndPolitic
+  Sports
+  Entertainment
 }

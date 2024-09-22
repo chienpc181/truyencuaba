@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 
-export async function GET(req: NextRequest, { params }: { params: { nameCode: string, isActive: boolean } }) {
-  const { nameCode, isActive } = params
+export async function GET(req: NextRequest, { params }: { params: { nameCode: string} }) {
+  const { nameCode } = params
   try {
     const person = await prisma.people.findUnique({
-      where: { nameCode: nameCode, isActive: true },
+      where: { nameCode: nameCode, isActive: true, isPublished: true },
       include: {
         // introduction: false,
         updatedAt: false,

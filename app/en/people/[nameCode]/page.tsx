@@ -2,23 +2,29 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import { SectionWithTranslation_EN } from '@/components/story/SectionWithTranslation'
 import ReadingToolbar from '@/components/ReadingToolbar'
+import Link from 'next/link'
+import { getDisplayNameByPeopleCategory, getRouteByPeopleCategory } from '@/app/mappingCategory'
 
 // This function generates the static paths
 export async function generateStaticParams() {
     const people = await prisma.people.findMany({
-        select: { nameCode: true, isActive: true }
+        where: { isActive: true, isPublished: true},
+        select: {
+          nameCode: true,
+          isActive: true,
+          isPublished: true,
+        },
     })
 
     return people.map((person) => ({
-        nameCode: person.nameCode,
-        isActive: person.isActive
+        nameCode: person.nameCode
     }))
 }
 
 // This function fetches the data for each static page
-async function getPerson(nameCode: string, isActive: boolean) {
+async function getPerson(nameCode: string) {
     const person = await prisma.people.findUnique({
-        where: { nameCode, isActive },
+        where: { nameCode, isActive: true, isPublished: true },
         include: {
             introduction: true,
             mainStory: true,
@@ -37,15 +43,16 @@ async function getPerson(nameCode: string, isActive: boolean) {
 
 // This is the actual page component
 export default async function PersonPage({ params }: { params: { nameCode: string } }) {
-    const person = await getPerson(params.nameCode, true)
+    const person = await getPerson(params.nameCode)
 
     return (
         <div className="story-container">
             <div className='story-details'>
                 <div className="breadcrumbs text-sm p-4">
                     <ul>
-                        <li><a href='/en/people'>People</a></li>
-                        <li>{person.name}</li>
+                        <li><Link href='/en/people'>Who is who</Link></li>
+                        <li><Link href={getRouteByPeopleCategory(person.category, 'en')}>{getDisplayNameByPeopleCategory(person.category, 'en')}</Link></li>
+                        {/* <li>{person.name}</li> */}
                     </ul>
                 </div>
                 <div className='reading-toolbar'>
