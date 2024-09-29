@@ -1,5 +1,4 @@
 import { getAllAuthors, getStoriesByAuthor } from '@/lib/api';
-// import FairyTalesList_EN from '@/components/story/FairyTalesList_EN';
 import { StoryList_EN } from '@/components/story/StoryList';
 import { Metadata, ResolvingMetadata } from 'next';
 import AuthorIntroduce_EN from '@/components/author/AuthorIntroduce_EN';
