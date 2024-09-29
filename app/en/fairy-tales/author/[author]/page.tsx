@@ -1,5 +1,6 @@
 import { getAllAuthors, getStoriesByAuthor } from '@/lib/api';
-import FairyTalesList_EN from '@/components/story/FairyTalesList_EN';
+// import FairyTalesList_EN from '@/components/story/FairyTalesList_EN';
+import { StoryList_EN } from '@/components/story/StoryList';
 import { Metadata, ResolvingMetadata } from 'next';
 import AuthorIntroduce_EN from '@/components/author/AuthorIntroduce_EN';
 
@@ -33,7 +34,7 @@ export default async function Page({ params }: { params: { author: string } }) {
             <AuthorIntroduce_EN author={decodedAuthor}></AuthorIntroduce_EN>
             <div >
                 <h2 className='font-bold text-lg'>Collection</h2>
-                <FairyTalesList_EN initialStories={stories} /> 
+                <StoryList_EN initialStories={stories} /> 
             </div>
             
         </div>

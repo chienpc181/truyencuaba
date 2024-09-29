@@ -1,5 +1,6 @@
 import { getAllAuthors, getStoriesByAuthor } from '@/lib/api';
-import FairyTalesList_VI from '@/components/story/FairyTalesList_VI';
+// import FairyTalesList_VI from '@/components/story/FairyTalesList_VI';
+import { StoryList_VI } from '@/components/story/StoryList';
 import { Metadata, ResolvingMetadata } from 'next';
 import AuthorIntroduce_VI from '@/components/author/AuthorIntroduce_VI';
 
@@ -33,7 +34,7 @@ export default async function Page({ params }: { params: { author: string } }) {
             <AuthorIntroduce_VI author={decodedAuthor}></AuthorIntroduce_VI>
             <div >
                 <h2 className='font-bold text-lg'>Tuyển Tập</h2>
-                <FairyTalesList_VI initialStories={stories} /> 
+                <StoryList_VI initialStories={stories} /> 
             </div>
         </div>
     );

@@ -82,7 +82,7 @@ const Navbar = () => {
                                 <HiMenuAlt1 className="h-6 w-6" />
                             </button>
                             <div className="hover: cursor-pointer ml-4">
-                                <Link href={`/about-us`} passHref legacyBehavior>
+                                <Link href={`/`} passHref legacyBehavior>
                                     <Image
                                         src="/truyencuaba_logo.png"
                                         alt="logo"
@@ -169,11 +169,11 @@ const Navbar = () => {
                             <div className="flex items-center ms-3">
                                 {!isLoading && (
                                     <div className='flex flex-col'>
-                                        <div className="about-us">
+                                        {/* <div className="about-us">
                                             <Link href="/about-us" passHref legacyBehavior>
                                                 about us
                                             </Link>
-                                        </div>
+                                        </div> */}
                                         <LanguageSwitcher />
                                     </div>
                                 )}
