@@ -3,32 +3,35 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import StoryCard_EN from '@/components/story/StoryCard_EN';
-import StoryCard_VI from './story/StoryCard_VI';
+import { StoryCard_EN, StoryCard_VI } from './story/StoryCard';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { useLanguageContext } from '@/app/context/LanguageProvider';
 import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
 
 interface CarouselProps {
-  stories: {
-    _id: string;
-    title: {
-      en: string;
-      vi: string;
-    };
-    introduction: {
-      en: string;
-      vi: string;
-    }[];
-    thumbnailUrl: string;
-    author: string;
+  stories: Story[];
+}
+
+interface Story {
+  _id: string
+  title: { en: string, vi: string }
+  introduction: {
+    en: string;
+    vi: string;
   }[];
+  thumbnailUrl: string,
+  author: string
 }
 
 export default function Carousel({ stories }: CarouselProps) {
   const {language} = useLanguageContext();
   const [isLoading, setLoading] = useState(true);
+  const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+
+  const onSelectStoryCard = (story: Story) => {
+    setSelectedStory(story);
+  };
 
   useEffect(() => {
     setLoading(false);
@@ -62,8 +65,8 @@ export default function Carousel({ stories }: CarouselProps) {
     >
       {stories.map((story) => (
         <SwiperSlide key={story._id}>
-          {language === 'en' && <StoryCard_EN story={story} />}
-          {language === 'vi' && <StoryCard_VI story={story} />}
+          {language === 'en' && <StoryCard_EN story={story} onClick={() => onSelectStoryCard(story)}/>}
+          {language === 'vi' && <StoryCard_VI story={story} onClick={() => onSelectStoryCard(story)}/>}
         </SwiperSlide>
       ))}
     </Swiper>

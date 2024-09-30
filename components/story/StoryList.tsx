@@ -37,9 +37,7 @@ function StoryList_EN({ initialStories }: FairyTalesListProps) {
         ))}
       </div>
       {selectedStory && (
-        <>
-          <StoryModal_EN story={selectedStory} onClose={closeModal}></StoryModal_EN>
-        </>
+        <StoryModal_EN story={selectedStory} onClose={closeModal}></StoryModal_EN>
       )}
     </div>
   )
@@ -63,9 +61,7 @@ function StoryList_VI({ initialStories }: FairyTalesListProps) {
           ))}
         </div>
         {selectedStory && (
-          <>
-            <StoryModal_VI story={selectedStory} onClose={closeModal}/>
-          </>
+          <StoryModal_VI story={selectedStory} onClose={closeModal}/>
         )}
       </div>
     )
