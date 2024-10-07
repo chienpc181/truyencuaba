@@ -56,7 +56,9 @@ export async function getAllAuthors() {
 }
 
 export async function getStoriesByAuthor(author: string) {
-  const response = await fetch(`${API_BASE_URL}/api/stories/author?author=${author}`)
+  const response = await fetch(`${API_BASE_URL}/api/stories/author?author=${author}`, {
+    next: {revalidate: 60}
+  })
   if (!response.ok) {
     throw new Error('Failed to fetch story data')
   }

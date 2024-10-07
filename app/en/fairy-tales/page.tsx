@@ -3,6 +3,7 @@ import Carousel from '@/components/Carousel';
 import CategoryHeader from '@/components/CategoryHeader';
 import Loading from '@/components/Loading';
 import dynamic from 'next/dynamic';
+import { getStoriesByAuthor } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: "Fairy Tales - truyencuaba",
@@ -26,11 +27,11 @@ async function fetchStoriesByAuthor(author: string) {
 
 export default async function Page() {
   const [storiesByBrothersGrimm, storiesByAndersen, fableAesops, folkTales, legendTales] = await Promise.all([
-    fetchStoriesByAuthor('Brothers Grimm'),
-    fetchStoriesByAuthor('Hans Christian Andersen'),
-    fetchStoriesByAuthor('Aesop'),
-    fetchStoriesByAuthor('FolkTales'),
-    fetchStoriesByAuthor('LegendTales'),
+    getStoriesByAuthor('Brothers Grimm'),
+    getStoriesByAuthor('Hans Christian Andersen'),
+    getStoriesByAuthor('Aesop'),
+    getStoriesByAuthor('FolkTales'),
+    getStoriesByAuthor('LegendTales'),
   ]);
 
   return (
