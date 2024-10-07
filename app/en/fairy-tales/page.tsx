@@ -10,20 +10,6 @@ export const metadata: Metadata = {
   description: "Wonderful fairy tales",
 };
 
-// const Carousel = dynamic(() => import('@/components/Carousel'), { loading: () => <Loading /> });
-
-const page = 1;
-const limit = 5;
-
-async function fetchStoriesByAuthor(author: string) {
-  const response = await fetch(`${process.env.BASE_URL}/api/stories/author?author=${author}&limit=${limit}`,
-    // { cache: 'no-store' }
-  )
-  if (!response.ok) {
-    throw new Error('Failed to fetch story data')
-  }
-  return response.json()
-}
 
 export default async function Page() {
   const [storiesByBrothersGrimm, storiesByAndersen, fableAesops, folkTales, legendTales] = await Promise.all([

@@ -7,24 +7,34 @@ import { getDisplayNameByPeopleCategory, getRouteByPeopleCategory } from '@/app/
 
 // This function generates the static paths
 export async function generateStaticParams() {
-    const people = await prisma.people.findMany({
-        where: { isActive: true, isPublished: true},
+    const peopleStories = await prisma.peoplestories.findMany({
+        where: { 
+            isActive: true, 
+            // isPublished: true,
+            status: "ReadyForPublish",
+        },
         select: {
           nameCode: true,
           isActive: true,
           isPublished: true,
+          status: true
         },
       });
 
-    return people.map((person) => ({
-        nameCode: person.nameCode
+    return peopleStories.map((ps) => ({
+        nameCode: ps.nameCode
     }))
 }
 
 // This function fetches the data for each static page
-async function getPerson(nameCode: string) {
-    const person = await prisma.people.findUnique({
-        where: { nameCode,  isActive: true, isPublished: true},
+async function getPeopleStory(nameCode: string) {
+    const peopleStory = await prisma.peoplestories.findUnique({
+        where: { 
+            nameCode,  
+            isActive: true, 
+            // isPublished: true,
+            status: "ReadyForPublish"
+        },
         include: {
             introduction: true,
             mainStory: true,
@@ -34,16 +44,16 @@ async function getPerson(nameCode: string) {
         }
     })
 
-    if (!person) {
+    if (!peopleStory) {
         notFound()
     }
 
-    return person
+    return peopleStory
 }
 
 // This is the actual page component
-export default async function PersonPage({ params }: { params: { nameCode: string } }) {
-    const person = await getPerson(params.nameCode)
+export default async function PeopleStoryPage({ params }: { params: { nameCode: string } }) {
+    const peopleStory = await getPeopleStory(params.nameCode)
 
     return (
         <div className="story-container">
@@ -51,8 +61,8 @@ export default async function PersonPage({ params }: { params: { nameCode: strin
                 <div className="breadcrumbs text-sm p-4">
                     <ul>
                         <li><Link href='/vi/danh-nhan'>Danh Nhân</Link></li>
-                        <li><Link href={getRouteByPeopleCategory(person.category, 'vi')}>{getDisplayNameByPeopleCategory(person.category, 'vi')}</Link></li>
-                        {/* <li>{person.name}</li> */}
+                        <li><Link href={getRouteByPeopleCategory(peopleStory.category, 'vi')}>{getDisplayNameByPeopleCategory(peopleStory.category, 'vi')}</Link></li>
+                        {/* <li>{peopleStory.name}</li> */}
                     </ul>
                     </div>
                     <div className='reading-toolbar'>
@@ -60,24 +70,24 @@ export default async function PersonPage({ params }: { params: { nameCode: strin
                 </div>
                 <article className='people-article'>
                     <section className='mb-6'>
-                        <h1 className="text-center font-serif">{person.name}</h1>
-                        <address className='text-center'>{person.title.vi} ({person.lifeTime})</address>
+                        <h1 className="text-center font-serif">{peopleStory.name}</h1>
+                        <address className='text-center'>{peopleStory.title.vi} ({peopleStory.lifeTime})</address>
                     </section>
                     <section className="min-h-40">
                         <div className='min-w-32 flex flex-col p-2 pl-0 items-center float-left'>
-                            <img src={person.thumbnailUrl} alt={person.name} className="mb-2 rounded-lg shadow-lg w-28" />
+                            <img src={peopleStory.thumbnailUrl} alt={peopleStory.name} className="mb-2 rounded-lg shadow-lg w-28" />
                         </div>
                         <div className=''>
-                            <SectionWithTranslation_VI title='' items={person.introduction}></SectionWithTranslation_VI>
+                            <SectionWithTranslation_VI title='' items={peopleStory.introduction}></SectionWithTranslation_VI>
                         </div>
                     </section>
                     <hr />
-                    <SectionWithTranslation_VI title='' items={person.mainStory}></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='' items={peopleStory.mainStory}></SectionWithTranslation_VI>
                     <hr />
-                    <SectionWithTranslation_VI title='Sự thật thú vị' items={person.facts} type='list'></SectionWithTranslation_VI>
-                    <SectionWithTranslation_VI title='Những câu nói bất hủ' items={person.quotes} type='list'></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Sự thật thú vị' items={peopleStory.facts} type='list'></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='Những câu nói bất hủ' items={peopleStory.quotes} type='list'></SectionWithTranslation_VI>
                     <div className='border border-solid rounded-2xl px-4'>
-                    <SectionWithTranslation_VI title='' items={person.conclusion}></SectionWithTranslation_VI>
+                    <SectionWithTranslation_VI title='' items={peopleStory.conclusion}></SectionWithTranslation_VI>
                     </div>
                 </article>
             </div>

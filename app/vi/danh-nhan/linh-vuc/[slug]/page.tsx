@@ -23,11 +23,12 @@ export async function generateStaticParams() {
 }
 
 async function getPeopleByField(fieldName: string) {
-    const people = await prisma.people.findMany({
+    const people = await prisma.peoplestories.findMany({
         where: {
             category: mappingFieldSlug(fieldName),
             isActive: true,
-            isPublished: true
+            // isPublished: true,
+            status: "ReadyForPublish"
         },
         select: {
             id: true,

@@ -2,32 +2,21 @@ import { Metadata } from 'next';
 import Carousel from '@/components/Carousel';
 import CategoryHeader from '@/components/CategoryHeader';
 import Loading from '@/components/Loading';
+import { getStoriesByAuthor } from '@/lib/api';
 
 export const metadata: Metadata = {
     title: "Truyện cổ tích - truyencuaba",
     description: "Truyện cổ tích Việt nam và thế giới",
 };
 
-const page = 1;
-const limit = 5;
-
-async function fetchStoriesByAuthor(author: string) {
-    const response = await fetch(`${process.env.BASE_URL}/api/stories/author?author=${author}&limit=${limit}`,
-        // { cache: 'no-store' }
-    )
-    if (!response.ok) {
-        throw new Error('Failed to fetch story data')
-    }
-    return response.json()
-}
 
 export default async function Page() {
     const [storiesByBrothersGrimm, storiesByAndersen, fableAesops, folkTales, legendTales] = await Promise.all([
-        fetchStoriesByAuthor('Brothers Grimm'),
-        fetchStoriesByAuthor('Hans Christian Andersen'),
-        fetchStoriesByAuthor('Aesop'),
-        fetchStoriesByAuthor('FolkTales'),
-        fetchStoriesByAuthor('LegendTales'),
+        getStoriesByAuthor('Brothers Grimm'),
+        getStoriesByAuthor('Hans Christian Andersen'),
+        getStoriesByAuthor('Aesop'),
+        getStoriesByAuthor('FolkTales'),
+        getStoriesByAuthor('LegendTales'),
     ]);
 
     return (

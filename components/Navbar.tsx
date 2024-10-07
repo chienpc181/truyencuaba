@@ -160,6 +160,12 @@ const Navbar = () => {
                                             labelEN={peopleCategory.scienceAndTechnology.displayNameEN}
                                             labelVI={peopleCategory.scienceAndTechnology.displayNameVI}
                                         />
+                                        <NavbarItem
+                                            hrefEN={peopleCategory.militaryAndPolitic.hrefEN}
+                                            hrefVI={peopleCategory.militaryAndPolitic.hrefVI}
+                                            labelEN={peopleCategory.militaryAndPolitic.displayNameEN}
+                                            labelVI={peopleCategory.militaryAndPolitic.displayNameVI}
+                                        />
                                     </ul>
                                 </div>
                             </div>
@@ -263,6 +269,14 @@ const Navbar = () => {
                             hrefVI={peopleCategory.scienceAndTechnology.hrefVI}
                             labelEN={peopleCategory.scienceAndTechnology.displayNameEN}
                             labelVI={peopleCategory.scienceAndTechnology.displayNameVI}
+                            icon={<MdKeyboardOptionKey />}
+                            isSubCategory={true}
+                        />
+                        <SidebarItem
+                            hrefEN={peopleCategory.militaryAndPolitic.hrefEN}
+                            hrefVI={peopleCategory.militaryAndPolitic.hrefVI}
+                            labelEN={peopleCategory.militaryAndPolitic.displayNameEN}
+                            labelVI={peopleCategory.militaryAndPolitic.displayNameVI}
                             icon={<MdKeyboardOptionKey />}
                             isSubCategory={true}
                         />

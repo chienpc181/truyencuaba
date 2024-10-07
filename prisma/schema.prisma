@@ -45,3 +45,32 @@ enum Category {
   Sports
   Entertainment
 }
+
+enum Status {
+  Inprogress
+  ReadyForPublish
+  Published
+  WaitingForRepublish
+  Republished
+}
+
+model peoplestories {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  name          String
+  nameCode      String      @unique
+  lifeTime      String
+  title         Translation
+  category      Category
+  thumbnailUrl  String
+  introduction  Translation[] 
+  mainStory     Translation[] 
+  facts         Translation[]
+  quotes        Translation[]
+  conclusion    Translation[]
+  isActive      Boolean
+  isPublished   Boolean
+  publishedDate DateTime?
+  status        Status
+}
