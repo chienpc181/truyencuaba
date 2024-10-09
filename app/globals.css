@@ -42,6 +42,9 @@ header {
 main {
   overflow-y: auto;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @layer utilities {
@@ -82,8 +85,31 @@ h1, h2, h3, h4, p {
   margin: 0 auto;
   max-width: 1200px;
   padding: 1rem;
-  padding-top: 0;
+  
+  .page-header {
+    border-bottom: 1px dashed;
+
+    h1 {
+      font-weight: bold;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    p {
+      font-style: italic;
+    }
+  }
+
+  .category-panel {
+    display: flex;
+    max-width: calc(100vw - 2rem);
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
 }
+
+
+
 
 .story-container {
   background-color:#3c3c3cff;
@@ -114,6 +140,34 @@ h1, h2, h3, h4, p {
   justify-content: space-between;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+
+  img {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    aspect-ratio: 16/9;
+  }
+
+  .thumbnail {
+    margin: -1rem;
+
+    img {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      height: 250px !important;
+    }
+  }
+
+  .introduction {
+    padding: 0 1rem;
+    /* max-height: 250px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 9; 
+    -webkit-box-orient: vertical;
+    white-space: normal; /* Ensures it works for multiline text */
+    line-height: 1.5; /* Adjust line-height based on your design */
+  }
 }
 
 .story-card:hover {
@@ -125,11 +179,6 @@ h1, h2, h3, h4, p {
   color: brown;
 }
 
-.story-card img {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  aspect-ratio: 16/9;
-}
 
 .story-dialog img{
   border-top-left-radius: 4px;
@@ -138,27 +187,6 @@ h1, h2, h3, h4, p {
   width: 100%;
 }
 
-.story-card .thumbnail {
-  margin: -1rem;
-}
-
-.story-card .thumbnail img {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  height: 250px !important;
-}
-
-.story-card .introduction {
-  padding: 0 1rem;
-  /* max-height: 250px; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 9; 
-  -webkit-box-orient: vertical;
-  white-space: normal; /* Ensures it works for multiline text */
-  line-height: 1.5; /* Adjust line-height based on your design */
-}
 
 .person-card .introduction {
   /* padding: 0 1rem; */
@@ -172,32 +200,8 @@ h1, h2, h3, h4, p {
   line-height: 1.5; /* Adjust line-height based on your design */
 }
 
-.language-switcher {
-  border: 1px solid darkgreen;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  font-size: 12px;
-  margin: 0 auto;
-}
 
-.language-switcher span {
-  font-weight: bold;
-  padding: 2px 8px;
-}
 
-.navbar-custom .btn-square {
-  width: 2rem;
-}
-
-.overlay-panel::before {
-  /* border-width: 10px;
-  margin-left: -10px;
-  border: solid transparent;
-  border-color: rgba(255, 255, 255, 0);
-  border-bottom-color: #f2f2f2; */
-}
 
 .overlay-panel::after, .overlay-panel::before {
   bottom: 100%;
@@ -221,37 +225,42 @@ h1, h2, h3, h4, p {
   display: flex;
   flex-direction: column;
   width: 100vw;
-}
 
-.navbar-custom .active-link {
-  border-bottom: 4px solid yellowgreen;
-  padding: 8px 0;
-}
+  .btn-square {
+    width: 2rem;
+  }
 
-.navbar-custom .navbar-custom-start ul {
-  width: 14rem;
-  padding: 1rem;
-  line-height: 32px;
-  min-height: 200px;
-  border-radius: 8px;
-  margin-top: 8px;
-}
-.navbar-custom .active-link-sidebar{
-  font-weight: 600 !important;
-  color: brown;
-  background-color: #fee2e2;
-}
+  .active-link {
+    border-bottom: 4px solid yellowgreen;
+    padding: 8px 0;
+  }
 
-.navbar-custom li:hover {
-  background-color: #fef2f2;
-}
+  .navbar-custom-start ul {
+    width: 14rem;
+    padding: 1rem;
+    line-height: 32px;
+    min-height: 200px;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
 
-.navbar-custom .active-link-navbar {
-  font-weight: 600 !important;
-  color: brown;
-  text-decoration: underline;
-  text-underline-offset: 8px;
-  text-decoration-thickness: 2px;
+  .active-link-sidebar{
+    font-weight: 600 !important;
+    color: brown;
+    background-color: #fee2e2;
+  }
+
+  li:hover {
+    background-color: #fef2f2;
+  }
+
+  .active-link-navbar {
+    font-weight: 600 !important;
+    color: brown;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 2px;
+  }
 }
 
 
@@ -268,74 +277,73 @@ h1, h2, h3, h4, p {
 }
 
 .story-details {
-  /* padding: 1rem; */
-  /* background-color:#3c3c3cff; */
   color: #e3e3e3ff;
   max-width: 800px;
   margin: 0 auto;
   overflow-wrap: break-word;
   padding-bottom: 2rem;
-}
 
-.story-details h1 {
+  h1 {
     font-size: 2em;
     /* margin: 1.25rem 0; */
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  .btn-translate {
+    padding: 0;
+    background-color: #676767;
+    border: none;
+    width: 22px;
+    height: 22px;
+    min-height: unset;
+    margin-left: 4px;
+    color: darkblue;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    /* text-indent: 1rem; */
+  }
+
+  .story-article {
+    padding: 1rem;
+  }
+
+  .people-article {
+    padding: 1rem;
+
+    h2 {
+      border-left: 4px solid brown;
+      padding-left: 0.5rem;
+      font-weight: bold;
+      font-size: 1.125rem;
+    }
+
+    ul {
+      list-style: unset;
+      padding-left: 2rem;
+      margin: unset;
+
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+      /* text-indent: 1rem; */
+    }
+  }
+
+  .thumbnail {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-top: 1rem;
+  }
 }
 
-.story-details .btn-translate {
-  padding: 0;
-  background-color: #676767;
-  border: none;
-  width: 22px;
-  height: 22px;
-  min-height: unset;
-  margin-left: 4px;
-  color: darkblue;
-}
-
-.story-details p {
-  font-size: 1.125em;
-  line-height: 1.6;
-  letter-spacing: 0.2px;
-  /* text-indent: 1rem; */
-}
-
-.people-article p {
-  font-size: 1em;
-  line-height: 1.6;
-  letter-spacing: 0.2px;
-  /* text-indent: 1rem; */
-}
-
-.story-details .story-article {
-  padding: 1rem;
-}
-
-.story-details .people-article {
-  padding: 1rem;
-}
-
-.story-details .people-article h2 {
-  border-left: 4px solid brown;
-  padding-left: 0.5rem;
-  font-weight: bold;
-  font-size: 1.125em;
-}
-
-.story-details .people-article ul {
-  list-style: unset;
-  padding-left: 2rem;
-  margin: unset;
-  
-}
-
-.story-details .thumbnail {
-  margin-left: -1rem;
-  margin-right: -1rem;
-  padding-top: 1rem;
-}
 
 @media (min-width: 768px) {
   .story-details .story-article {
@@ -350,7 +358,6 @@ h1, h2, h3, h4, p {
   .story-details .thumbnail {
     margin-left: -2rem;
     margin-right: -2rem;
-    /* padding-top: 1rem; */
   }
 
   .story-details .people-article {
@@ -391,19 +398,4 @@ h1, h2, h3, h4, p {
   top: auto !important;
 }
 
-.page-container .page-header {
-  border-bottom: 1px dashed;
-  /* margin-bottom: 1rem; */
-}
-
-.page-container .page-header h1 {
-  font-weight: bold;
-  font-size: 1.25em;
-  text-align: center;
-}
-
-.page-container .page-header p {
-  font-style: italic;
-  /* text-indent: 1rem; */
-}
 

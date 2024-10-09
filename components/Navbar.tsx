@@ -30,11 +30,11 @@ export default function Navbar()  {
     }, [language]);
     
     return (
-        <div className={`navbar-custom ${isSidebarOpen ? 'h-screen' : null}`}>
+        <div className={`navbar-custom ${isSidebarOpen ? 'h-screen' : ''}`}>
             <nav className="relative w-full bg-white border-b border-gray-200" >
                 <div className="px-4 py-1 lg:px-5 lg:pl-3">
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4 h-16">
+                        <div className="flex items-center gap-4 h-14">
                             <button
                                 onClick={openSidebar}
                                 aria-controls="logo-sidebar"
@@ -59,13 +59,9 @@ export default function Navbar()  {
                             <QuickNavigation/>
                         </div>
                         <div className="flex items-center">
-                            <div className="flex items-center ms-3">
-                                {!isLoading && (
-                                    <div className='flex flex-col'>
-                                        <LanguageSwitcher />
-                                    </div>
+                            {!isLoading && (
+                                    <LanguageSwitcher />
                                 )}
-                            </div>
                         </div>
                     </div>
                 </div>

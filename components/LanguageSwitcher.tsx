@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useLanguageContext } from '@/app/context/LanguageProvider';
 import { useEffect } from 'react';
 import { PeopleCategory } from '@/app/mappingCategory';
+import { TbSquareLetterEFilled, TbSquareLetterVFilled  } from "react-icons/tb";
 
 export default function LanguageSwitcher() {
     const router = useRouter();
@@ -84,19 +85,12 @@ export default function LanguageSwitcher() {
         }
     }
 
-    const buttonHighlight = {
-        color: '#fff',
-        backgroundColor: 'darkgreen',
-    };
-
     return (
-        <div className='language-switcher'>
+        <>
             <button onClick={handleLanguageToggle}>
-                <div className="flex">
-                    <span style={language === 'vi' ? buttonHighlight : {}}>VI</span>
-                    <span style={language === 'en' ? buttonHighlight : {}}>EN</span>
-                </div>
+                {language === 'en' && <TbSquareLetterEFilled className='text-blue-700' size={32}/>}
+                {language === 'vi' && <TbSquareLetterVFilled className='text-red-700' size={32}/>}
             </button>
-        </div>
+        </>
     );
 }
