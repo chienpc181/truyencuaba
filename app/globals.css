@@ -30,6 +30,18 @@ body {
 
     /* font-family: "Poppins", sans-serif; */
     /* font-family: Poppins,Roboto,Helvetica Neue,Arial,sans-serif,-apple-system,BlinkMacSystemFont; */
+
+    overflow-y: hidden;
+}
+
+header {
+  position: sticky;
+  top: 0;
+}
+
+main {
+  overflow-y: auto;
+  height: 100vh;
 }
 
 @layer utilities {
@@ -47,11 +59,7 @@ h1, h2, h3, h4, p {
   line-height: 1.5;
 }
 
-.main-container {
-  /* padding-top: 76px;
-  padding-left: 16rem; */
-  min-height: 800px;
-}
+
 
 .story-card h2 {
   font-size: 1.25em;
@@ -209,6 +217,12 @@ h1, h2, h3, h4, p {
   border-bottom-color: #ffffff;
 }
 
+.navbar-custom {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
 .navbar-custom .active-link {
   border-bottom: 4px solid yellowgreen;
   padding: 8px 0;
@@ -225,6 +239,11 @@ h1, h2, h3, h4, p {
 .navbar-custom .active-link-sidebar{
   font-weight: 600 !important;
   color: brown;
+  background-color: #fee2e2;
+}
+
+.navbar-custom li:hover {
+  background-color: #fef2f2;
 }
 
 .navbar-custom .active-link-navbar {

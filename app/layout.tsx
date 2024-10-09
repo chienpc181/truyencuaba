@@ -25,10 +25,11 @@ export default function RootLayout({
           <header>
             <Navbar></Navbar>
           </header>
-          <main className="main-container">
+          <main >
             {children}
+            <Footer></Footer>
           </main>
-          <Footer></Footer>
+          
         </LanguageProvider>
 
       </body>

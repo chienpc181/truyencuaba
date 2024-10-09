@@ -35,10 +35,9 @@ export async function getAllStoryIds() {
 
 export async function getStoryById(id: string) {
   // const response = await fetch(`/api/stories/${storyId}`, { cache: 'force-cache' })
-  const response = await fetch(`${API_BASE_URL}/api/stories/${id}`)
-  //   const response = await fetch(`/api/stories/${id}`, {
-  //     next: { revalidate: 60 } // Revalidate every 60 seconds
-  // });
+  const response = await fetch(`${API_BASE_URL}/api/stories/${id}`, {
+    next: { revalidate: 600 }
+  })
 
   if (!response.ok) {
     throw new Error('Failed to fetch story data')
@@ -57,7 +56,7 @@ export async function getAllAuthors() {
 
 export async function getStoriesByAuthor(author: string) {
   const response = await fetch(`${API_BASE_URL}/api/stories/author?author=${author}`, {
-    next: {revalidate: 60}
+    next: {revalidate: 600}
   })
   if (!response.ok) {
     throw new Error('Failed to fetch story data')
