@@ -307,7 +307,7 @@ function QuickNavigation() {
                         labelEN="Fables of Aesop"
                         labelVI="Ngụ Ngôn Aesop"
                     />
-                    <NavbarItem
+                    {/* <NavbarItem
                         hrefEN="/en/fairy-tales/author/FolkTales"
                         hrefVI="/vi/truyen-co-tich/tac-gia/FolkTales"
                         labelEN="Folk Tales"
@@ -318,7 +318,7 @@ function QuickNavigation() {
                         hrefVI="/vi/truyen-co-tich/tac-gia/LegendTales"
                         labelEN="Legend Tales"
                         labelVI="Sự Tích"
-                    />
+                    /> */}
                 </ul>
             </div>
             <div className='px-4 border-x-gray-200'>

@@ -12,12 +12,10 @@ export const metadata: Metadata = {
 
 
 export default async function Page() {
-  const [storiesByBrothersGrimm, storiesByAndersen, fableAesops, folkTales, legendTales] = await Promise.all([
+  const [storiesByBrothersGrimm, storiesByAndersen, fableAesops] = await Promise.all([
     getStoriesByAuthor('Brothers Grimm'),
     getStoriesByAuthor('Hans Christian Andersen'),
     getStoriesByAuthor('Aesop'),
-    getStoriesByAuthor('FolkTales'),
-    getStoriesByAuthor('LegendTales'),
   ]);
 
   return (
@@ -38,14 +36,6 @@ export default async function Page() {
         <section className='mt-4'>
           <CategoryHeader label='Fables of Aesop' url='/en/fairy-tales/author/Aesop'></CategoryHeader>
           <Carousel stories={fableAesops.stories}></Carousel>
-        </section>
-        <section className='mt-4'>
-          <CategoryHeader label='Vietnamese folk tales' url='/en/fairy-tales/author/FolkTales'></CategoryHeader>
-          <Carousel stories={folkTales.stories}></Carousel>
-        </section>
-        <section className='mt-4'>
-          <CategoryHeader label='Vietnamese legend tales' url='/en/fairy-tales/author/LegendTales'></CategoryHeader>
-          <Carousel stories={legendTales.stories}></Carousel>
         </section>
       </div>
 
