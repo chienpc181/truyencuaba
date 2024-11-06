@@ -143,7 +143,7 @@ function Logo() {
                     width={1200}
                     height={300}
                     priority={true}
-                    style={{ height: '48px', aspectRatio: '4', width: 'unset' }}
+                    style={{ height: '40px', aspectRatio: '4', width: 'unset' }}
                 />
             </Link>
         </div>

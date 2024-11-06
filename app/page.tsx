@@ -6,25 +6,28 @@ export default function Home() {
     
 
     <div >
-      <section className="bg-gradient-to-b from-purple-100 to-blue-200 min-h-screen pt-20">
+      <section className="bg-gradient-to-b from-purple-100 to-blue-200 min-h-screen p-4 pt-8">
         <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-purple-800 mb-8">Brothers Grimm&apos; fairy tales</h2>
           <FairyStoryHeroSection author="Brothers Grimm" />
-          <h2 className="text-3xl font-bold text-purple-800 mb-8">Brothers Grimm&apos; fairy tales</h2>
+          
           <RelatedFairyStories author="Brothers Grimm" />
         </div>
       </section>
-      <section className="bg-gradient-to-b from-blue-200 to-yellow-50 min-h-screen py-10">
+      <section className="bg-gradient-to-b from-blue-200 to-yellow-50 min-h-screen p-4 pt-8">
         <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-blue-800 mb-8">Andersen&apos; stories</h2>
           <FairyStoryHeroSection author="Hans Christian Andersen" />
-          <h2 className="text-3xl font-bold text-blue-800 mb-8">Andersen&apos; stories</h2>
+          
           <RelatedFairyStories author="Hans Christian Andersen" />
         </div>
 
       </section>
-      <section className="bg-gradient-to-b from-yellow-50 to-red-200 min-h-screen py-10">
+      <section className="bg-gradient-to-b from-yellow-50 to-red-200 min-h-screen p-4 pt-8">
         <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-yellow-800 mb-8">Aesop&apos; fables</h2>
           <FairyStoryHeroSection author="Aesop" />
-          <h2 className="text-3xl font-bold text-yellow-800 mb-8">Aesop&apos; fables</h2>
+          
           <RelatedFairyStories author="Aesop" />
         </div>
 
