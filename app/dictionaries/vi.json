@@ -1,0 +1,25 @@
+{
+    "fairyStory": {
+        "title": "Thế Giới Của Truyện Cổ Tích và Ngụ Ngôn",
+        "description": "Chào mừng bạn đến với thế giới diệu kỳ, nơi trí tưởng tượng sống động qua sức hút vượt thời gian của những câu chuyện cổ tích và ngụ ngôn. Bộ sưu tập này tập hợp những câu chuyện được yêu mến từ các tác giả huyền thoại, mang đến những cuộc phiêu lưu đầy thú vị với các loài động vật biết nói, những anh hùng dũng cảm và những vùng đất phép thuật. Mỗi câu chuyện đều chứa đựng một bài học ý nghĩa, dù là về lòng tốt, sự thông minh, hay tầm quan trọng của lòng can đảm. Từ những câu chuyện cổ tích mê hoặc của Anh em Grimm và Hans Christian Andersen đến những câu chuyện ngụ ngôn sâu sắc của Aesop, mỗi câu chuyện là một cánh cửa mở ra thế giới của kỳ diệu và trí tuệ. Hãy để những carousel dẫn bạn qua những câu chuyện cuốn hút này và bắt đầu một hành trình không thể quên vào thế giới của nghệ thuật kể chuyện.",
+        "categoryHeader": {
+            "grimm": "Anh em nhà Grimm",
+            "andersen": "Truyện cổ tích Andersen",
+            "aesop": "Truyện ngụ ngôn Aesop"
+        },
+        "category": {
+            "grim":{
+                "title": "Khám Phá Thế Giới Kỳ Diệu Của Anh Em Nhà Grimm",
+                "description": "Hãy bước vào vũ trụ huyền diệu của Anh em Grimm, nơi mỗi câu chuyện là cánh cửa mở ra một thế giới đầy kỳ quan, bí ẩn và những bài học vượt thời gian. Anh em tác giả người Đức đã chiếm trọn trái tim của biết bao thế hệ với các câu chuyện như Lọ Lem, Bạch Tuyết và Hansel và Gretel. Từ những anh hùng dũng cảm và kẻ láu cá thông minh đến sinh vật phép thuật và vùng đất thần tiên, mỗi câu chuyện đều tràn ngập trí tưởng tượng và sự khôn ngoan. Dù bạn tìm kiếm cuộc phiêu lưu hay một bài học đạo đức, những câu chuyện của Anh em Grimm vẫn tiếp tục mê hoặc cả trẻ em lẫn người lớn. Hãy khám phá bộ sưu tập kỳ diệu của họ và để cuộc phiêu lưu bắt đầu!"
+            },
+            "andersen": {
+                "title": "Hans Christian Andersen: Nhà Văn Lỗi Lạc Của Những Câu Chuyện Cổ Tích",
+                "description": "Hãy bước vào thế giới của Hans Christian Andersen, tác giả người Đan Mạch được yêu mến với những câu chuyện cổ tích vượt thời gian đã khơi gợi trí tưởng tượng của trẻ em và người lớn khắp thế giới. Với những câu chuyện mê hoặc như Nàng Tiên Cá, Chú Vịt Con Xấu Xí và Nữ Hoàng Tuyết, Andersen đưa chúng ta vào những cuộc hành trình không thể quên qua những vùng đất phép màu, đầy cảm xúc và bài học sâu sắc về cuộc sống. Những câu chuyện của ông không chỉ tràn ngập phép thuật mà còn chứa đựng những thông điệp cảm động về tình yêu, lòng dũng cảm và tinh thần con người. Hãy đắm mình trong thế giới của ông và khám phá lại sự kỳ diệu của nghệ thuật kể chuyện qua những tác phẩm không thể nào quên của Andersen."
+            },
+            "aesop":{
+                "title": "Ngụ Ngôn Aesop: Bài Học Cuộc Sống Qua Những Câu Chuyện",
+                "description": "Hãy bước vào thế giới của Aesop, người kể chuyện cổ xưa đã định hình cách chúng ta hiểu về trí tuệ, đạo đức và bản chất con người trong suốt nhiều thế kỷ qua. Nổi tiếng với những câu chuyện ngắn nhưng sâu sắc như Rùa và Thỏ và Cáo và Chùm Nho, những câu chuyện ngụ ngôn của Aesop mang đến những bài học cuộc sống vượt thời gian thông qua sức hấp dẫn của các nhân vật động vật và những câu chuyện đơn giản. Mỗi câu chuyện đều chứa đựng một thông điệp mạnh mẽ vang vọng qua nhiều thế hệ, nhắc nhở chúng ta về những đức tính như sự chân thành, lòng tốt và kiên trì. Hãy khám phá bộ sưu tập của Aesop và tìm ra những sự thật vĩnh cửu trong những câu chuyện quý giá này."
+            }
+        }
+    }
+}

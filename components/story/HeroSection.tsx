@@ -5,17 +5,18 @@
 import { FaBook, FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { getStories, getStoriesByAuthor, getHeroStoryByAuthor } from "@/lib/api"
 import Link from "next/link";
+import { Language } from '@/app/definitions';
 
 
-export async function FairyStoryHeroSection({author}: {author: string}) {
+export async function FairyStoryHeroSection({author, lang}: {author: string, lang: string}) {
   
   const response = await getHeroStoryByAuthor(author);
   const storyData = response.stories[0];
   const heroStory = {
     id: storyData.id,
-    title: storyData.title.en,
+    title: lang === 'en' ? storyData.title.en : storyData.title.vi,
     imageUrl: storyData.thumbnailUrl,
-    introduction: storyData.introduction[0].en
+    introduction: lang === 'en' ? storyData.introduction[0].en : storyData.introduction[0].vi
   };
 
   return (
