@@ -84,7 +84,7 @@ export default function StoryDetails_VI({ story }: { story: any }) {
         </article>
       </div>
       {overlayPosition && overlayContent && (
-        <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}>
+        <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}  onSpeak={() => {}}>
           <p>{overlayContent}</p>
         </OverlayPanel>
       )}
