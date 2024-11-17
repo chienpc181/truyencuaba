@@ -1,13 +1,19 @@
 import React, { useRef, useEffect } from 'react';
+import useTextToSpeech from '@/app/hooks/useTextToSpeech';
 
 interface OverlayPanelProps {
   children: React.ReactNode;
   position: { top: number; left: number };
   onClose: () => void;
+  onSpeak: () => void
 }
 
-export default function OverlayPanel({ children, position, onClose }: OverlayPanelProps) {
+export default function OverlayPanel({ children, position, onClose, onSpeak }: OverlayPanelProps) {
   const panelRef = useRef<HTMLDivElement>(null);
+
+  const handleSpeak = () => {
+    onSpeak();
+  }
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -44,7 +50,7 @@ export default function OverlayPanel({ children, position, onClose }: OverlayPan
       {children}
       <div className='flex justify-start py-2' style={{borderTop: '1px solid #e5e7eb'}}>
         <button className='btn btn-sm btn-circle mr-2'>C</button>
-        <button className='btn btn-sm btn-circle'>S</button>
+        <button className='btn btn-sm btn-circle' onClick={handleSpeak}>Speak</button>
       </div>
     </div>
   );

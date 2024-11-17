@@ -4,11 +4,15 @@ import Image from 'next/image';
 import OverlayPanel from '@/components/OverlayPanel';
 import { MdTranslate } from "react-icons/md";
 import ReadingToolbar from '../ReadingToolbar';
+import useTextToSpeech from '@/app/hooks/useTextToSpeech';
+import YoutubeEmbedded from '../YoutubeEmbedded';
 
 export default function StoryDetails_EN({ story }: { story: any }) {
   const [overlayPosition, setOverlayPosition] = useState<{ top: number; left: number } | null>(null);
   const [overlayContent, setOverlayContent] = useState<string | null>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [overlayPanelIndex, setOverlayPanelIndex] = useState(0);
+  const {speak, speaking, stopSpeaking} = useTextToSpeech();
 
   const setButtonRef = useCallback((index: number) => (el: HTMLButtonElement | null) => {
     buttonRefs.current[index] = el;
@@ -16,6 +20,7 @@ export default function StoryDetails_EN({ story }: { story: any }) {
 
   const showOverlayPanel = (index: number) => {
     const buttonElement = buttonRefs.current[index];
+    setOverlayPanelIndex(index);
     if (buttonElement) {
       const paragraph = buttonElement.parentElement;
       if (paragraph) {
@@ -34,6 +39,11 @@ export default function StoryDetails_EN({ story }: { story: any }) {
     setOverlayPosition(null);
     setOverlayContent(null);
   };
+
+  const handleSpeak = () => {
+    
+    speak(story.paragraphs[overlayPanelIndex].en)
+  }
 
   return (
     <div className='story-container'>
@@ -63,6 +73,7 @@ export default function StoryDetails_EN({ story }: { story: any }) {
                   height: 'auto',
                 }}
               />
+              <YoutubeEmbedded videoUrl='https://www.youtube.com/watch?v=654NKWqXNn8'/>
             </div>
           </section>
           <section className='mt-8'>
@@ -84,7 +95,7 @@ export default function StoryDetails_EN({ story }: { story: any }) {
         </article>
       </div>
       {overlayPosition && overlayContent && (
-        <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}>
+        <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel} onSpeak={handleSpeak}>
           <p>{overlayContent}</p>
         </OverlayPanel>
       )}
