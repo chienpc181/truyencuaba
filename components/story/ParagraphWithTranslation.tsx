@@ -43,7 +43,7 @@ function ParagraphWithTranslation_EN({ item }: { item: { en: string, vi: string 
                 </button>
             </p>
             {overlayPosition && overlayContent && (
-                <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}>
+                <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel} onSpeak={() => {}}>
                     <p className='text-gray-800' dangerouslySetInnerHTML={parseContentToHTML(overlayContent)} />
                 </OverlayPanel>
             )}
@@ -98,7 +98,7 @@ function ParagraphWithTranslation_VI({ item }: { item: { en: string, vi: string 
             </p>
 
             {overlayPosition && overlayContent && (
-                <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}>
+                <OverlayPanel position={overlayPosition} onClose={hideOverlayPanel}  onSpeak={() => {}}>
                     <p className='text-gray-800' dangerouslySetInnerHTML={parseContentToHTML(overlayContent)} />
                 </OverlayPanel>
             )}
