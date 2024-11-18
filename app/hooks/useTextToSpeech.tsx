@@ -24,7 +24,17 @@ function useTextToSpeech(): UseTextToSpeechHook {
           setTimeout(loadVoices, 100);
         } else {
           // Find an English voice
-          const englishVoice = voices.find(v => v.lang.startsWith('en'));
+          let englishVoice = voices.find(v => v.default);
+          if (!englishVoice) {
+            englishVoice = voices.find(v => v.localService);
+          }
+          if (!englishVoice) {
+            englishVoice = voices.find(v => v.lang.startsWith('en'));
+          }
+          if (!englishVoice) {
+            englishVoice = voices[0];
+          }
+          
           if (englishVoice) {
             setVoice(englishVoice);
           }
