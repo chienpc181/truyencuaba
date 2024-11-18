@@ -19,20 +19,23 @@ function useTextToSpeech(): UseTextToSpeechHook {
       setSynth(window.speechSynthesis);
       const loadVoices = () => {
         const voices = window.speechSynthesis.getVoices();
-        // Find an English voice
-        const englishVoice = voices.find(v => v.lang.startsWith('en'));
-        if (englishVoice) {
-          setVoice(englishVoice);
+        if (voices.length === 0) {
+          // Retry if voices aren't loaded yet
+          setTimeout(loadVoices, 100);
+        } else {
+          // Find an English voice
+          const englishVoice = voices.find(v => v.lang.startsWith('en'));
+          if (englishVoice) {
+            setVoice(englishVoice);
+          }
         }
       };
-
+  
       // Initial load of voices
       loadVoices();
-
-      // Event listener for when voices change (some browsers need this)
-      if (window.speechSynthesis.onvoiceschanged !== undefined) {
-        window.speechSynthesis.onvoiceschanged = loadVoices;
-      }
+  
+      // Event listener for when voices change (ensures Android Chrome reloads voices)
+      window.speechSynthesis.onvoiceschanged = loadVoices;
     } else {
       console.error('Text-to-speech not supported on this device/browser.');
     }

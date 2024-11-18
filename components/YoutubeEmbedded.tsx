@@ -5,6 +5,10 @@ interface YoutubeEmbeddedProps {
   altText?: string; // Alternative text for the illustration image
 }
 
+const videoContainer: React.CSSProperties = {
+  position: 'relative'
+}
+
 const YoutubeEmbedded: React.FC<YoutubeEmbeddedProps> = ({ videoUrl, altText = 'Illustration image' }) => {
   // Extract YouTube video ID from the provided URL
   const extractVideoId = (url: string): string | null => {
@@ -19,10 +23,10 @@ const YoutubeEmbedded: React.FC<YoutubeEmbeddedProps> = ({ videoUrl, altText = '
   }
 
   return (
-    <div className="video-container">
+    <div className="video-container" style={videoContainer}>
       <iframe
-        width="560"
-        height="315"
+        width="100%"
+        height="100%"
         src={`https://www.youtube.com/embed/${videoId}`}
         title="YouTube video player"
         frameBorder="0"

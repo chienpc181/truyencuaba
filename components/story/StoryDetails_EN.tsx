@@ -73,7 +73,7 @@ export default function StoryDetails_EN({ story }: { story: any }) {
                   height: 'auto',
                 }}
               />
-              <YoutubeEmbedded videoUrl='https://www.youtube.com/watch?v=654NKWqXNn8'/>
+              <YoutubeEmbedded videoUrl='https://www.youtube.com/watch?v=30jBwQ09aVQ'/>
             </div>
           </section>
           <section className='mt-8'>
